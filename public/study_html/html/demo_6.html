@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="iframe" />
+    <meta name="keywords" content="iframe" />
+    <meta name="author" content="jsh" />
+    <title>demo_6</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            background-color: powderblue;
+        }
+
+        .item {
+            flex-basis: auto;
+            flex-shrink: 1;
+            flex-grow: 1;
+            align-self: center;
+        }
+
+        /* .container.item:nth-child(1) {
+            order: 1;
+            z-index: 1;
+        }
+
+        .container.item:nth-child(2) {
+            order: 2;
+            z-index: 2;
+            transform: scale(2);
+        } */
+
+        footer {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            text-align: center;
+            padding: 0px;
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="title">iframe</h1>
+    </header>
+
+    <nav>
+        <div>
+            <a class="menu" href="/study_html">Back</a>
+            <a class="menu" href="/">Home</a>
+            <hr />
+        </div>
+    </nav>
+
+    <section>
+        <article class="container">
+            <iframe class="item" src="http://opentutorials.org" height="800px" width="300px"></iframe>
+            <iframe class="item" src="./iframe_source.html" height="600px" width="300px" sandbox></iframe>
+            <!-- <iframe class="item" src="./iframe_source.html" height="600px" width="300px"></iframe> -->
+        </article>
+    </section>
+
+    <footer>
+        <p>www.btinc.co.kr</p>
+    </footer>
+</body>
+
+</html>

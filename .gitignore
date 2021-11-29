@@ -1,0 +1,7 @@
+node_modules/
+
+sessions
+
+config/administrator.json
+
+config/google.json

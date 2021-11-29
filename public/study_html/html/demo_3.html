@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_3</title>
+  <link type="text/css" href="../css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <h1 class="title">입력 양식 (Form)</h1>
+  <div>
+    <a class="menu" href="/study_html">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <form action="/study_html" method="GET">
+    <p>
+      <label for="id">ID<input id="id" name="id" type="text" value="jsh" placeholder="Please enter your ID."
+          autocomplete="off" autofocus /> </label>
+    </p>
+    <p>
+      <label for="pw">PW<input id="pw" name="pw" type="password" placeholder="Please enter your password."
+          autocomplete="off" /> </label>
+    </p>
+    <input name="company" type="hidden" value="BT" />
+    <p>
+      <label for="job">Job<textarea id="job" name="job" rows="2" cols="50">Programmer</textarea></label>
+    </p>
+    <input type="submit" />
+  </form>
+  <hr />
+  <form action="/study_html" method="GET">
+    <p>
+      <label for="color">
+        Single Color
+        <select id="color" name="color">
+          <option value="red">red</option>
+          <option value="green">green</option>
+          <option value="blue">blue</option>
+        </select>
+      </label>
+    </p>
+    <p>
+      <label for="multi_color">
+        Multi Color
+        <select id="multi_color" name="multi_color" multiple>
+          <option value="red">red</option>
+          <option value="green">green</option>
+          <option value="blue">blue</option>
+        </select>
+      </label>
+    </p>
+    <input type="submit" value="전송" />
+  </form>
+</body>
+
+</html>

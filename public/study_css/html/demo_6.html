@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_6</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <style>
+    .paragraph {
+      background-color: powderblue;
+      padding: 5px;
+    }
+  </style>
+
+  <script>
+    function change(self) {
+      // let elements = document.querySelectorAll(".paragraph");
+
+      let elements = document.getElementsByClassName("paragraph");
+
+      console.log(elements);
+
+      console.log(self.selectedIndex);
+
+      for (const key in elements) {
+        if (elements.hasOwnProperty(key)) {
+          const element = elements[key];
+          element.style.display = self.value;
+        }
+      }
+
+      // if (self.selectedIndex === 0) {
+      //   elements[0].style.display = "block";
+      //   elements[1].style.display = "block";
+      // } else {
+      //   elements[0].style.display = "inline";
+      //   elements[1].style.display = "inline";
+      // }
+
+      // if (self.selectedIndex === 0) {
+      //   for (element in elements) {
+      //     elements[element].style.display = "block";
+      //   }
+      // } else {
+      //   for (element in elements) {
+      //     elements[element].style.display = "inline";
+      //   }
+      // }
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Display Property</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <h3>HTML 엘리먼트 종류</h3>
+    <ol>
+      <li>Block Level Element : 화면 전체를 사용</li>
+      <li>Inline Level Element : 자기 자신의 크기만큼 사용</li>
+    </ol>
+  </div>
+  <hr>
+  <div>
+    <p class="paragraph">paragraph</p>
+    <p class="paragraph">paragraph</p>
+  </div>
+  <hr>
+  <select name="elements" onchange="change(this)">
+    <option value="block">Block Level Element</option>
+    <option value="inline">Inline Level Element</option>
+  </select>
+</body>
+
+</html>

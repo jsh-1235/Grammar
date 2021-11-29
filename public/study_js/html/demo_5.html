@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_5</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <script>
+    function sum(arr) {
+      let result = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        result += arr[i];
+      }
+
+      return result;
+    }
+
+    function func1() {
+      let arr = [1, 2, 3, 4, 5];
+
+      alert(sum(arr));
+    }
+
+    function reverse(a, b) {
+      return b - a;
+    }
+
+    function func2() {
+      let arr = [1, 3, 9, 7, 4, 2, 5, 8];
+
+      var result = arr.sort(reverse);
+
+      let html = "<p>";
+
+      for (let i = 0; i < result.length; i++) {
+        html += `$[result[i]`;
+      }
+
+      html += "</p>";
+
+      window.document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">함수 (Function)</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

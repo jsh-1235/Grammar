@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_3</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <script>
+    function func1() {
+      id = prompt("ID를 입력해 주세요.");
+
+      if (id === "jsh") {
+        alert("ID가 일치 합니다.")
+      } else {
+        alert("ID가 일치하지 합니다.")
+      }
+    }
+
+    function func2() {
+      // 중첩된 조건문
+
+      id = prompt("ID를 입력해주세요.");
+
+      if (id === "jsh") {
+        pw = prompt("비밀번호를 입력하세요.")
+
+        if (pw === "12345") {
+          alert("인증 되었습니다.")
+        } else {
+          alert("비밀번호가 일치하지 않습니다..")
+        }
+      } else {
+        alert("ID가 일치하지 않습니다..")
+      }
+    };
+
+    function func3() {
+      // 논리 연산자
+
+      id = prompt("ID를 입력해주세요.");
+      pw = prompt("비밀번호를 입력하세요.")
+
+      if (id === "jsh" && pw === "12345") {
+        alert("인증 되었습니다.")
+      } else {
+        alert("인증에 실패 했습니다.")
+      }
+    };
+
+    function func4() {
+      var results = [];
+
+      results.push((0 ? true : false));
+      results.push((1 ? true : false));
+      results.push((!''));
+      results.push((!undefined));
+      results.push((!null));
+      results.push((!NaN));
+
+      var html = "";
+
+      for (let i = 0; i < results.length; i++) {
+        html += `<p>result${i + 1} = ${results[i]}</p>`
+      }
+
+      window.document.getElementById("result").innerHTML = html;
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1 class="title">조건문 (Conditional Statement)</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <button onclick="func3()">func3</button>
+  <button onclick="func4()">func4</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

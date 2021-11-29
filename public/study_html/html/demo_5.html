@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="html5" />
+  <meta name="keywords" content="video,canvas" />
+  <meta name="author" content="jsh" />
+  <title>demo_5</title>
+  <link type="text/css" href="../css/style.css" rel="stylesheet" />
+
+  <style>
+    footer {
+      text-align: center;
+      background-color: gainsboro;
+      padding: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">HTML5</h1>
+  </header>
+
+  <nav>
+    <div>
+      <a class="menu" href="/study_html">Back</a>
+      <a class="menu" href="/">Home</a>
+      <hr />
+    </div>
+  </nav>
+
+  <section>
+    <article>
+      <div style="text-align: center;">
+        <h3>video</h3>
+        <video width="300" controls autoplay>
+          <source src="../../videos/blackpink.webm" />
+        </video>
+      </div>
+    </article>
+    <hr />
+    <article>
+      <form action="/study_html" method="POST">
+        <label for="number">number<input id="number" name="number" type="number" min="10" max="20" value="10" /></label>
+        <label for="range">range<input id="range" name="range" type="range" min="0" max="100" value="50" /></label>
+        <label for="color">color<input id="color" name="color" type="color" /></label>
+        <br />
+        <label for="date">date<input id="date" name="date" type="date" /></label>
+        <label for="week">week<input id="week" name="week" type="week" /></label>
+        <label for="month">month<input id="month" name="month" type="month" /></label>
+        <label for="time">time<input id="time" name="time" type="time" /></label>
+        <br />
+        <label for="datetime">datetime<input id="datetime" name="datetime" type="datetime" /></label>
+        <label for="datetime-local">datetime-local <input id="datetime-local" name="datetime-local"
+            type="datetime-local" /></label>
+        <br />
+        <label for="email">email<input id="email" name="email" type="email" autocomplete="off" /></label>
+        <label for="search">search <input id="search" name="search" type="search" /></label>
+        <label for="tel">tel<input id="tel" name="tel" type="tel" /></label>
+        <label for="url">url<input id="url" name="url" type="url" /></label>
+        <br />
+        <label for="password">password<input id="password" name="password" type="password" autocomplete="off" autofocus
+            placeholder="비밀번호를 입력해주세요." /></label>
+        <p>
+          <input type="submit" />
+        </p>
+      </form>
+    </article>
+    <hr />
+  </section>
+
+  <footer>
+    <p>www.btinc.co.kr</p>
+  </footer>
+</body>
+
+</html>

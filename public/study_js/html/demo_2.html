@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_2</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <script>
+    function func1() {
+      // 동등 연산자 (Equal Operator)
+
+      var num1 = 10;
+      var num2 = '10'
+
+      var result = (num1 == num2)
+
+      alert(result);
+    }
+
+    function func2() {
+      // 일치 연산자 (Strict Equal Operator)
+      // 값과 데이터 타입이 일치해야 한다.
+
+      var num1 = '10';
+      var num2 = 10;
+
+      var result = (num1 === num2);
+
+      alert(result);
+    }
+
+    function func3() {
+      // 부정
+
+      var num1 = 10;
+      var num2 = 20;
+
+      var result1 = (num1 == num2)
+      var result2 = (num1 != num2)
+      var result3 = (num1 !== num2)
+      var result4 = (num1 > num2);
+      var result5 = (num1 < num2);
+
+      var html = `
+        <p>result1 : ${result1}</p>
+        <p>result2 : ${result2}</p>
+        <p>result3 : ${result3}</p>
+        <p>result4 : ${result4}</p>
+        <p>result5 : ${result5}</p>
+      `;
+
+      window.document.getElementById('result').innerHTML = html;
+    }
+
+    function func4() {
+      // 배열
+
+      var num1 = 10;
+      var num2 = 20;
+
+      var results = [];
+
+      results.push((num1 == num2));
+      results.push((num1 != num2));
+      results.push((num1 !== num2));
+      results.push((num1 > num2));
+      results.push((num1 < num2));
+
+      var html = "";
+
+      for (let i = 0; i < results.length; i++) {
+        html += `<p>results[${i}] = ${results[i]}</p>`
+      }
+
+      window.document.getElementById("result").innerHTML = html;
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">비교 연산자</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <button onclick="func3()">func3</button>
+  <button onclick="func4()">func4</button>
+  <hr />
+  <div id="result">
+  </div>
+</body>
+
+</html>

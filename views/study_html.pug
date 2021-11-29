@@ -1,0 +1,29 @@
+extends layout
+
+block style
+    style.
+        li, a{
+            font-size: 1.5rem;
+            margin: 5px;
+        }
+
+block content
+    h1= title
+        p Welcome to #{title}
+    div
+        a(href="/") Home
+    hr
+    div
+        ol
+            li
+                a(href="/study_html/html/demo_1.html") 기본 문법
+            li
+                a(href="/study_html/html/demo_2.html") 주요 태그
+            li
+                a(href="/study_html/html/demo_3.html") 입력 양식 (#{color})
+            li
+                a(href="/study_html/html/demo_4.html") 정보로서의 HTML
+            li
+                a(href="/study_html/html/demo_5.html") HTML5
+            li
+                a(href="/study_html/html/demo_6.html") iframe

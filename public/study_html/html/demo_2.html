@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo_2</title>
+    <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">주요 태그</h1>
+    <div>
+        <a class="menu" href="/study_html">Back</a>
+        <a class="menu" href="/">Home</a>
+    </div>
+    <hr>
+    <h3>p 태그</h3>
+    <p>paragraph : 단락</p>
+    <p>Browsers automatically add a single blank line before and after each \<p\> element.</p\>
+    </p>
+    <h3>br 태그</h3>
+    <p>Single Line Break : 줄바꿈</p>
+    <p>Insert single line breaks in a text</p>
+    <hr>
+    <h3>img 태그</h3>
+    <p>alt 속성 : alternative text</p>
+    <p>title 속성 : tooltip</p>
+    <div>
+        <img src="../../images/html.png" title="html" alt="html" style="width: 100px; height:100px;">
+        <img src="../../images/css.png" title="css" alt="css" style="width: 100px; height:100px;">
+        <img src="../../images/javascript.png" alt="javascript" style="width: 100px; height:100px;">
+    </div>
+    <hr>
+    <h3>table 태그</h3>
+    <div>
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>성별</th>
+                    <th>주소</th>
+                    <th>회비</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>정승훈</td>
+                    <td>남자</td>
+                    <td>경기도</td>
+                    <td rowspan="2">100</td>
+                </tr>
+                <tr>
+                    <td>강아름</td>
+                    <td>여자</td>
+                    <td>강원도</td>
+                    <!-- <td>200</td> -->
+                </tr>
+            </tbody>
+            <tfoot>
+                <td colspan="3">합계</td>
+                <td>300</td>
+            </tfoot>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+extends layout
+
+block style
+  style.
+    li, a {
+      font-size: 1.5rem;
+      margin : 5px;
+    }
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    a(href="/") Home
+  hr
+  div
+    ol
+      li
+        a(href="/study_js/html/demo_1.html") 변수 및 상수
+      li
+        a(href="/study_js/html/demo_2.html") 관계 연산자, 논리 연산자, 불 연산자
+      li
+        a(href="/study_js/html/demo_3.html") 조건문
+      li
+        a(href="/study_js/html/demo_4.html") 반복문
+      li
+        a(href="/study_js/html/demo_5.html") 함수
+      li
+        a(href="/study_js/html/demo_6.html") 배열
+      li
+        a(href="/study_js/html/demo_7.html") 객체
+      li
+        a(href="/study_js/html/demo_8.html") 모듈
+      li
+        a(href="/study_js/html/demo_9.html") 정규 표현식
+      li
+        a(href="/study_js/html/demo_10.html") FOP
+      li
+        a(href="/study_js/html/demo_11.html") OOP
+      li
+        a(href="/study_js/html/demo_12.html") 표준 내장 객체
+      li
+        a(href="/study_js/html/demo_13.html") 기본 개념
+  hr
+  p area : #{area}

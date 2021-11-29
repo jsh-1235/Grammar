@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_2</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    /* 부모-자손 관계 선택자 */
+    ul li {
+      color: red;
+    }
+
+    /* 부모-자식 관계 선택자 */
+    #lecture>li {
+      border: 1px solid orange;
+      color: orange;
+      font-size: 32px;
+    }
+
+    /* 형제 관계 선택자 */
+    ul,
+    ol {
+      background-color: powderblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">부모 자식 선택자</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Javascript</li>
+    </ul>
+  </div>
+  <hr>
+  <div>
+    <ol id="lecture">
+      <li>HTML</li>
+      <li>
+        CSS
+        <ol>
+          <li>selector</li>
+          <li>declaration</li>
+        </ol>
+      </li>
+      <li>Javascript</li>
+    </ol>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_5</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    li {
+      color: red;
+    }
+
+    .class-selector {
+      color: green;
+    }
+
+    /* .class-selector {
+      color: green !important;
+    } */
+
+    #id-selector {
+      color: blue
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Cascading Style Sheet</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div style="font-size: 32px;">
+    <h3>다양한 효과에 대한 우선 순위</h3>
+    <p>WeBrowser < User < Author</p>
+  </div>
+  <hr>
+  <div>
+    <ol>
+      <li>CSS</li>
+      <li style="color: powderblue">CSS</li>
+      <li id="id-selector">CSS</li>
+      <li class="class-selector">CSS</li>
+      <li class="class-selector" id="id-selector">CSS</li>
+      <li class="class-selector" id="id-selector" style="color:yellow">CSS</li>
+    </ol>
+  </div>
+  <hr>
+  <div>
+    <h1>스타일 적용 우선 순위</h1>
+    <ol>
+      <li>style attribute</li>
+      <li>id selector</li>
+      <li>class selector</li>
+      <li>tag selector</li>
+    </ol>
+  </div>
+</body>
+
+</html>

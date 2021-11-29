@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css">
+
+  <script>
+    // 변수의 구성 : Data Type / Size / Value / Scope
+
+    var func2 = function () {
+      // 한줄 주석
+
+      var num1 = 1;
+      var num2 = 2;
+
+      var result = num1 + num2;
+
+      alert(`num1 + num2 = ${result}`);
+    }
+
+    var func3 = function () {
+      /*
+        여러줄 주석
+      */
+
+      var num1 = 10;
+      var num2 = 20;
+
+      var result = num1 + num2;
+
+      alert(`${num1} + ${num2} = ${result}`);
+    }
+
+    var func4 = function () {
+      // 상수
+      const num1 = 100;
+      const num2 = 200;
+
+      var result = num1 + num2;
+
+      alert(`${num1} + ${num2} = ${result}`);
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Data Type</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <button value="func1" onclick="(function(){alert('Inline function')})();">func1</button>
+  <button value="func2" onclick="func2()">func2</button>
+  <button value="func3" onclick="func3()">func3</button>
+  <button value="func4" onclick="func4()">func4</button>
+</body>
+
+</html>

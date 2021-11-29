@@ -1,0 +1,39 @@
+extends layout
+
+block style
+  style.
+    li, a{
+      font-size: 1.5rem;
+      margin: 5px;
+    }
+
+block content
+  h1= title
+  p Welcome to #{title}
+  hr
+  div
+    ol
+      li
+        a(href="/study_html") HTML
+      li
+        a(href="/study_css") CSS
+      li
+        a(href="/study_js") Javascript
+      li
+        a(href="/study_web_browser") Web Browser
+      li
+        a(href="/") JQuery
+      li
+        a(href="/") Regular Expression
+      li
+        a(href="/") UI Library
+      li
+        a(href="/study_oop") OOP
+      li
+        a(href="/study_immutable") Immutable
+      li
+        a(href="/study_redux") Redux
+      li
+        a(href="/study_npm") NPM
+      li
+        a(href="/study_webpack") Webpack
