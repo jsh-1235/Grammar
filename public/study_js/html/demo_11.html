@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_11</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <script>
+    function func1() {
+      var person = {};
+
+      person.name = 'jsh';
+
+      person.introduce = function () {
+        return "My name is " + this.name;
+      }
+
+      console.log(person.introduce());
+    }
+
+    function func2() {
+      var person = {
+        'name': 'jsh',
+        'introduce': function () {
+          return "My name is " + this.name;
+        }
+      }
+
+      console.log(person.introduce());
+    }
+
+    // 코드 중복의 제거
+    function func3() {
+      // 생성자 (Constructor) : 객체를 생성하고 속성을 초기화 한다.
+      function Person() {
+
+      };
+
+      var p1 = Person();
+      console.log(p1);
+
+      var p2 = new Person();
+      console.log(p2);
+
+    }
+
+    function func4() {
+      function Person(name) {
+        this.name = name;
+        this.introduce = function () {
+          return "My name is " + this.name;
+        }
+      }
+
+      var p1 = new Person("jsh");
+      console.log(p1.introduce());
+
+      var p2 = new Person("kar");
+      console.log(p2.introduce());
+    }
+
+    //=============================================================================
+    function alarm() {
+      alert("Hello !!!");
+    }
+
+    function func5() {
+      window.alarm();
+    }
+
+    //=============================================================================
+    function func6() {
+      if (window == this) {
+        console.log("window == this");
+      }
+    }
+
+    function func7() {
+      // 메서드의 호출
+      var o = {
+        func: function () {
+          if (o == this) {
+            console.log('o == this');
+          }
+        }
+      }
+
+      o.func();
+    }
+
+    function func8() {
+      var funcThis = null;
+
+      function Func() {
+        funcThis = this;
+        console.log(this);
+      }
+
+      var o1 = Func();    // 함수의 호출
+
+      if (funcThis == window) {
+        console.log("funcThis == window");
+      }
+
+      var o2 = new Func();  // 객체의 메서드 호출
+
+      if (funcThis == o2) {
+        console.log("funcThis == o2");
+      }
+    }
+
+    function func9() {
+      function Func() {
+        console.log(this);
+        console.log(o);
+      }
+
+      var o = Func();
+    }
+
+    //=============================================================================
+    function func10() {
+      // 함수 리터럴 (Function Literal)
+      // 함수를 쉽게 작성해 준다.
+
+      function sum1(x, y) {
+        return x + y;
+      }
+
+      console.log(sum1);
+      console.log(sum1(1, 2));
+
+      var sum2 = new Function('x', 'y', 'return x + y;');
+
+      console.log(sum2);
+      console.log(sum2(3, 4));
+    }
+
+    function func11() {
+      // Apply Call
+
+      var o = {
+        'name': "This is a o"
+      };
+
+      var p = {
+        'name': "This is a p"
+      };
+
+      function func() {
+        switch (this) {
+          case o:
+            console.log('o');
+            break;
+          case p:
+            console.log('p');
+            break;
+          case window:
+            console.log('window');
+            break;
+        }
+      }
+
+      function func_name() {
+        console.log(this.name);
+      }
+
+      func();
+      func.apply(o);
+      func.apply(p);
+
+      func_name();
+      func_name.apply(o);
+      func_name.apply(p);
+    }
+
+    function func12() {
+      // 상속을 통해서 로직을 재사용 할 수 있다.
+      function Person(name) {
+        this.name = name;
+      }
+
+      Person.prototype.name = null;
+      Person.prototype.introduce = function () {
+        return "My name is " + this.name + ".";
+      }
+
+      var p1 = new Person('jsh');
+      console.log(p1.introduce());
+
+      function Programmer(name) {
+        this.name = name;
+      }
+
+      Programmer.prototype = new Person();
+      Programmer.prototype.coding = function () {
+        return "I am a programmer.";
+      }
+
+      var p2 = new Programmer('kar');
+      console.log(p2.introduce());
+      console.log(p2.coding());
+
+      function Designer(name) {
+        this.name = name;
+      }
+
+      Designer.prototype = new Person();
+      Designer.prototype.design = function () {
+        return "I am a designer."
+      }
+
+      var p3 = new Designer('kbj');
+      console.log(p3.introduce());
+      console.log(p3.design());
+      console.log(p3.coding);
+    }
+
+    //=============================================================================
+    function func13() {
+      // Prototype Chain
+
+      function Ultra() {
+        Ultra.prototype.ultraProp = 1;
+      }
+
+      function Super() { }
+      Super.prototype = new Ultra();
+
+      function Sub() { }
+      Sub.prototype = new Super();
+
+      var s = new Sub();
+      console.log(s.ultraProp);
+      s.ultraProp = 3;
+      console.log(s.ultraProp);
+      Sub.prototype.ultraProp = s;
+      console.log(s.ultraProp);
+
+      var o = new Sub()
+      console.log(o.ultraProp);
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Object Oriented Programming</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <h3>객체지향 프로그래밍 패러다임은 로직을 상태(state)와 행위(behave)로 이루어진 객체로 구성한다.</h3>
+  <h4>Javascript : Prototype-based Programming</h4>
+  <h4>객체란 서로 연관된 변수(property)와 함수(method)의 그룹핑한 그릇이라고 할 수 있다.</h4>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <button onclick="func3()">func3</button>
+  <button onclick="func4()">func4</button>
+  <hr>
+  <h3>모든 객체는 전역 객체(Global Object)의 프로퍼티이다.</h3>
+  <h4>ECMScript에서는 전역 객체의 API를 정의해두었다. 그 외의 API는 호스트 환경에서 필요에 따라서 추가로 정의하고 있다.</h4>
+  <button onclick="func5()">func5</button>
+  <hr>
+  <h3>this는 함수 내에서 함수 호출 맥락(context)를 의미한다.</h3>
+  <h4>맥락이라는 것은 상황에 따라서 달라진다는 의미인데 즉 함수를 어떻게 호출하느냐에 따라서 this가 가르키는 대상이 달라진다는 뜻이다.</h4>
+  <h4 style="color: red;">함수안에서 this가 가르키는 대상은 그 함수가 소속되어 있는 객체를 가르킨다.</h4>
+  <button onclick="func6()">func6</button>
+  <button onclick="func7()">func7</button>
+  <button onclick="func8()">func8</button>
+  <button onclick="func9()">func9</button>
+  <hr>
+  <h3>객체로서의 함수</h3>
+  <h4>함수는 여러 객체에 소속될 수 있다.</h4>
+  <button onclick="func10()">func10</button>
+  <button onclick="func11()">func11</button>
+  <hr>
+  <h3>상속 (Inheritance)</h3>
+  <h4>상속은 객체의 로직을 그대로 물려받는 또 다른 객체를 만들 수 있다.</h4>
+  <button onclick="func12()">func12</button>
+  <hr>
+  <h3>원형 (Prototype)</h3>
+  <h4>prototype에 저장된 속성들은 생성자를 통해서 객체가 만들어질 때 그 객체에 연결된다.</h4>
+  <button onclick="func13()">func13</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

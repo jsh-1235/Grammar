@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_10</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <script>
+    function test() {
+      var i = 0;
+    }
+
+    function func1() {
+      // 유효 범위 : Scope
+
+      let html = "";
+
+      for (var i = 0; i < 5; i++) {
+        test();
+        console.log(i)
+
+        html += `<p>${i}</p>`;
+      }
+
+      document.getElementById("result").innerHTML = html;
+    }
+
+    // 전역 변수의 사용을 자제하자.
+    // 불가피한 경우 하나의 객체를 전역변수로 만들고 객체의 속성으로 변수를 관리한다.
+
+    myApp = {};
+
+    myApp.calculator = {
+      'add': null,
+      'subtract': null
+    }
+
+    myApp.coordinate = {
+      'left': null,
+      'right': null
+    }
+
+    function display(args) {
+      let html = "";
+
+      for (key in args) {
+        html += `<p>${args[key]}</p>`;
+      }
+
+      document.getElementById("result").innerHTML = html;
+    }
+
+    function func2() {
+      myApp.calculator.add = 1;
+      myApp.calculator.subtract = 2;
+
+      myApp.coordinate.left = 10;
+      myApp.coordinate.right = 20;
+
+      console.log(myApp);
+
+      display(myApp.calculator);
+      // display(myApp.coordinate);
+    }
+
+    function func3() {
+      for (var i = 0; i < 1; i++) {
+        // let name = 'coding everybody';
+        var name = 'coding everybody';    // Hoisting
+      }
+
+      alert(name);
+
+      console.log(name);
+    }
+
+    var number = 5;
+
+    function numbering() {
+      document.getElementById("result").innerHTML = `<p>${number}</p>`;
+    }
+
+    function func4() {
+      // JS는 정적 유효 범위 (static scoping or lexical scoping)를 갖는다.
+      var number = 10;
+
+      numbering();
+    }
+
+    //===================================================================================
+
+    function calculator(func, num) {
+      return func(num);
+    }
+
+    function increase(num) {
+      return num + 1;
+    }
+
+    function decrease(num) {
+      return num - 1;
+    }
+
+    function func5() {
+      // 값으로서의 함수
+      console.log(calculator(increase, 1));
+      console.log(calculator(decrease, 1));
+    }
+
+    function calc(mode) {
+      var result = {
+        'plus': function (left, right) {
+          return left + right;
+        },
+        'minus': function (left, right) {
+          return left - right;
+        }
+      }
+
+      return result[mode];
+    }
+
+    function func6() {
+      // 함수는 함수의 리턴 값으로도 사용할 수 있다.
+      console.log(calc('plus')(2, 1));
+      console.log(calc('minus')(2, 1));
+    }
+
+    function sortNumber(a, b) {
+      if (a > b) {
+        return 1;   // 양수
+      } else if (a < b) {
+        return -1;   // 음수
+      } else {
+        return 0;
+      }
+    }
+    function func7() {
+      var numbers = [2, 4, 7, 1, 3, 5, 9, 8, 6];
+
+      console.log(numbers.sort());
+      console.log(numbers.sort(sortNumber));
+    }
+
+    //===================================================================================
+    function func8() {
+      function outer() {
+        var title = "coding everybody";    // 외부 함수에 정의된 지역변수
+
+        // 내부 함수
+        function inner() {
+          alert(title);
+        }
+
+        inner();
+      }
+
+      outer();
+    }
+
+    function func9() {
+      // 외부 함수
+      function outer() {
+        var title = "coding everybody";    // 외부 함수에 정의된 지역변수
+        return function inner() {
+          alert(title);
+        }
+      }
+
+      inner = outer();
+    }
+
+    // function func10() {
+    //   inner();
+    // }
+
+    function func10() {
+      // Private Variable
+      // private 속성은 객체의 외부에서는 접근 할 수 없는 외부에 감춰진 속성이나 메소드를 의미한다.
+      // 이를 통해서 객체의 내부에서만 사용해야 하는 값이 노출됨으로서 생길 수 있는 오류를 줄일 수 있다.
+      // 자바와 같은 언어에서는 이러한 특성을 언어 문법 차원에서 지원하고 있다.
+
+      function factory_movie(title) {
+        return {
+          get_title: function () {
+            return title;
+          },
+          set_title: function (_title) {
+            if (typeof (_title) === 'string') {
+              title = _title;
+            } else {
+              alert("제목은 문자열이어야 합니다.")
+            }
+          }
+        }
+      }
+
+      ghost = factory_movie("Ghost in the shell");
+      matrix = factory_movie("Matrix");
+
+      alert(ghost.get_title());
+      alert(matrix.get_title());
+
+      ghost.set_title("오징어 게임");
+      matrix.set_title(12345);
+
+      alert(ghost.get_title());
+      alert(matrix.get_title());
+    }
+
+    function func11() {
+      var arr = [];
+
+      for (var i = 0; i < 5; i++) {
+        arr[i] = function (id) {
+          return function () {
+            return id;
+          }
+        }(i);
+      }
+
+      for (var key in arr) {
+        console.log(arr[key]());
+      }
+
+      console.log(arr);
+    }
+
+    //===================================================================================
+    function func12() {
+      function sum() {
+        var i, _sum = 0;
+
+        for (i = 0; i < arguments.length; i++) {
+          console.log(i + ' : ' + arguments[i]);
+
+          _sum += arguments[i];
+        }
+
+        return _sum;
+      }
+
+      console.log('result : ' + sum(1, 2, 3, 4, 5));  // 인자 (argument)
+    }
+
+    function func13() {
+      function zero() {
+        console.log(zero.length + " " + arguments.length);
+      }
+
+      function one(arg1) {
+        console.log(zero.length + " " + arguments.length);
+      }
+
+      zero();
+      one(1);
+      one(1, 2);
+      one(1, 2, 3);
+    }
+
+    //===================================================================================
+    function func14() {
+      function sum(arg1, arg2) {
+        return arg1 + arg2;
+      }
+
+      alert(sum.apply(null, [1, 2]));
+    }
+
+    function func15() {
+      // 전역 객체
+      o1 = {
+        val1: 1,
+        val2: 2,
+        val3: 3
+      };
+
+      // 전역 객체
+      o2 = {
+        val1: 1,
+        val2: 2,
+        val3: 3,
+        val4: 4,
+        val5: 5
+      };
+
+      function sum() {
+        var _sum = 0;
+
+        for (name in this) {
+          _sum += this[name];
+        }
+
+        return _sum;
+      }
+
+      alert(sum.apply(o1));
+      alert(sum.apply(o2));
+    }
+
+    function func16() {
+      function sum() {
+        var _sum = 0;
+
+        for (name in this) {
+          if (typeof this[name] != 'function') {
+            _sum += this[name];
+          }
+        }
+
+        return _sum;
+      }
+
+      let o1 = {
+        'val1': 1,
+        'val2': 2,
+        'val3': 3,
+        sum: sum
+      };
+
+      let o2 = {
+        v1: 1,
+        v2: 2,
+        v3: 3,
+        v4: 4,
+        sum: sum
+      };
+
+      alert(o1.sum());
+      alert(o2.sum());
+    }
+
+    function func17() {
+      console.log(o1);
+      console.log(o2);
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Function Oriented Programming</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <h3>유효 범위</h3>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <button onclick="func3()">func3</button>
+  <button onclick="func4()">func4</button>
+  <hr>
+  <h3>값으로서의 함수와 콜백</h3>
+  <button onclick="func5()">func5</button>
+  <button onclick="func6()">func6</button>
+  <button onclick="func7()">func7</button>
+  <hr>
+  <h3>closure</h3>
+  <h4>클로저는 내부 함수가 외부 함수의 맥락(context)에 접근할 수 있는 것을 가르킨다.</h4>
+  <h4>내부 함수는 외부 함수의 지역 변수에 접근할 수 있는데 외부 함수의 실행이 끝나서 외부 함수가 소멸된 이후에도 내부 함수가 외부 함수의 변수에 접근할 수 있다.</h4>
+  <h4>이런 메커니즘을 클로저라고 한다.</h4>
+  <h4>클로저란 내부 함수가 외부 함수의 지역 변수에 접근할 수 있고 외부 함수는 외부 함수의 지역 변수를 사용하는 내부 함수가 소멸될 때까지 소멸되지 않는 특성을 의미한다.</h4>
+  <button onclick="func8()">func8</button>
+  <button onclick="func9()">func9</button>
+  <button onclick="func10()">func10</button>
+  <button onclick="func11()">func11</button>
+  <hr>
+  <h3>arguments</h3>
+  <h4>유사 배열</h4>
+  <h4>aguments는 사용자가 전달한 인자가 저장된다.</h4>
+  <button onclick="func12()">func12</button>
+  <button onclick="func13()">func13</button>
+  <hr>
+  <h3>함수의 호출</h3>
+  <button onclick="func14()">func14</button>
+  <button onclick="func15()">func15</button>
+  <button onclick="func16()">func16</button>
+  <button onclick="func17()">func17</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

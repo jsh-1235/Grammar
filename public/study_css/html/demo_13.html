@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_13</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <style>
+    /* 500px 이하일 때 적용 */
+    @media (max-width: 500px) {
+      body {
+        background-color: powderblue;
+      }
+
+      .content {
+        flex-direction: column;
+      }
+
+      .content nav,
+      .content aside {
+        border: none;
+        flex-basis: auto;
+      }
+
+      main {
+        order: 0;
+      }
+
+      nav {
+        order: 2;
+      }
+
+      aside {
+        order: 2;
+        display: none;
+      }
+    }
+
+    /* 600px 이하일 때 적용 */
+    @media (max-width: 600px) {
+      /* body {
+        background-color: green;
+      } */
+    }
+
+    /* 600px 이상일 때 적용 */
+    @media (min-width: 601px) {
+      body {
+        background-color: rgba(0, 0, 255, 0.1);
+      }
+    }
+
+    * {
+      margin: 0px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid gray;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid gray;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .content {
+      display: flex;
+    }
+
+    .content nav {
+      border-right: 1px solid gray;
+    }
+
+    .content aside {
+      border-left: 1px solid gray;
+      text-align: center;
+    }
+
+    nav,
+    aside {
+      flex-basis: 200px;
+      flex-shrink: 0;
+    }
+
+    main {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>반응형 웹 (Media Query)</h1>
+    </header>
+    <section class="content">
+      <nav>
+        <ul>
+          <li>html</li>
+          <li>css</li>
+          <li>javascript</li>
+        </ul>
+      </nav>
+      <main>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae amet praesentium ut? Illo fuga labore
+        aliquid delectus, neque assumenda odit, natus accusantium dolorum reiciendis, obcaecati ex id molestiae nobis
+        nisi!
+      </main>
+      <aside>
+        Advertisement
+      </aside>
+    </section>
+    <footer>
+      <div>
+        <a href="/study_css">Back</a>
+        <a href="/">Home</a>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

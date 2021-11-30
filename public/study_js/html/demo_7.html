@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_7</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <script>
+    function func1() {
+      var grades = {
+        'jsh': 100,
+        'kar': 90,
+        "kbj": 80
+      }
+
+      let html = '';
+
+      for (key in grades) {
+        html += `<li>[${key}] : ${grades[key]}</li>`;
+      }
+
+      window.document.getElementById("result").innerHTML = html;
+    };
+
+    var grades = {
+      'list': {
+        'jsh': 100,
+        'kar': 90,
+        'kbj': 80
+      },
+      'show': function () {
+        let html = '';
+
+        // for (key in grades.list) {
+        //   html += `<li>[${key}] : ${grades.list[key]}</li>`;
+        // }
+
+        for (key in this.list) {
+          html += `<li>[${key}] : ${this.list[key]}</li>`;
+        }
+
+        window.document.getElementById("result").innerHTML = html;
+      }
+    }
+
+    function func2() {
+      grades.show();
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">객체 (Object)</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

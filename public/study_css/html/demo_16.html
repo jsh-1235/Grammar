@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_16</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <link href="../fontello/css/fontello.css" rel="stylesheet" text="text/css">
+  <link href="../fontello/css/animation.css" rel="stylesheet" text="text/css">
+
+  <style>
+    .icon {
+      font-family: "fontello";
+      color: palevioletred;
+      font-size: 3em;
+    }
+
+    #test::before {
+      content: "s";
+      color: red;
+      font-size: 128px;
+    }
+
+    #test::after {
+      content: "e";
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Fontello Icon</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <p class="icon animate-spin">&#xe800</p>
+  </div>
+  <div>
+    <p class="icon animate-spin">&#xe801</p>
+  </div>
+  <div>
+    <p class="icon animate-spin">&#xe802</p>
+  </div>
+  <div>
+    <p class="icon animate-spin">&#xe803</p>
+  </div>
+  <div>
+    <i class="icon icon-key animate-spin"></i>
+    <i class="icon icon-plus-squared-alt"></i>
+    <i class="icon icon-user-times"></i>
+  </div>
+  <div id="test">A</div>
+  <div>
+    <a href="/"><i class="icon icon-key"></i></a>
+    <button><i class="icon icon-cab animate-spin" style="padding: 10px;"></i></button>
+    <i class="icon icon-user-times"></i>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_7</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <style>
+    .paragraph {
+      border: 10px solid red;
+      padding: 80px;
+      margin: 20px;
+      display: block;
+    }
+
+    #small {
+      border: 10px solid black;
+    }
+
+    #large {
+      border: 30px solid black;
+    }
+
+    .sizing {
+      margin: 10px;
+      width: 150px;
+      box-sizing: content-box;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+    }
+
+    function changeDisplay(self) {
+      window.document.getElementById("container").style.display = self.value;
+      console.log(self.value);
+      console.log(this.value);
+    }
+
+    function changeBoxSizing(self) {
+      var elements = window.document.getElementsByClassName("sizing");
+
+      for (const key in elements) {
+        if (elements.hasOwnProperty(key)) {
+          const element = elements[key];
+
+          element.style.boxSizing = self.value;
+        } else {
+          console.log(elements[key])
+        }
+
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Box Model</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <div id="container" style="background-color: aquamarine; display: block;">
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nostrum quaerat aut consequuntur nesciunt,
+      temporibus nihil quidem nulla suscipit cum est veritatis inventore porro, alias nobis quam. Nulla, corporis
+      assumenda.
+    </p>
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nostrum quaerat aut consequuntur nesciunt,
+      temporibus nihil quidem nulla suscipit cum est veritatis inventore porro, alias nobis quam. Nulla, corporis
+      assumenda.
+    </p>
+  </div>
+  <div>
+    <label for="display1"><input id="display1" name="display" type="radio" value="block" checked onclick="changeDisplay(this)">block</label>
+    <label for="display2"><input id="display2" name="display" type="radio" value="inline-block" onclick="changeDisplay(this)">inline-block</label>
+  </div>
+  <hr>
+  <div>
+    <h3>box-sizing</h3>
+    <div class="sizing" id="small">Hello</div>
+    <div class="sizing" id="large">Hello</div>
+  </div>
+  <div>
+    <label for="box1"><input id="box1" name="box-sizing" type="radio" value="content-box" checked onclick="changeBoxSizing(this)">content-box</label>
+    <label for="box2"><input id="box2" name="box-sizing" type="radio" value="border-box" onclick="changeBoxSizing(this)">border-box</label>
+  </div>
+</body>
+
+</html>

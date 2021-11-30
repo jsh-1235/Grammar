@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_8</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="../js/circle.js"></script>
+
+  <script>
+    function func1() {
+      alert(circle.area(10));
+    }
+
+    function func2() {
+      alert(circle.circumference(10));
+    }
+
+    window.onload = function () {
+      $('#btn1').click(function () {
+        $('#list li').text('Coding everybody');
+      })
+
+      function addEvent(target, eventType, eventHandler, useCapture) {
+        if (target.addEventListener) {  // W3C DOM
+          target.addEventListener(eventType, eventHandler, useCapture ? useCapture : false);
+        } else {  // IDE DOM
+          var r = target.attachEvent("on" + eventType, eventHandler);
+        }
+      }
+
+      function clickHandler(event) {
+        var nav = document.getElementById("list");
+
+        for (let i = 0; i < nav.childNodes.length; i++) {
+          var child = nav.childNodes[i];
+
+          if (child.nodeType == 3) {
+            continue;
+          }
+
+          child.innerText = "Coding everybody"
+        }
+      }
+
+      addEvent(document.getElementById("btn2"), 'click', clickHandler);
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">모듈 (Module)</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <hr>
+  <button id="btn1">execute1</button>
+  <!-- <script>
+    $('#btn1').click(function () {
+      $('#list li').text('Coding everybody : JQuery');
+    });
+  </script> -->
+  <button id="btn2">execute2</button>
+  <hr>
+  <div>
+    <ul id="list">
+      <li>empty</li>
+      <li>empty</li>
+      <li>empty</li>
+      <li>empty</li>
+    </ul>
+  </div>
+</body>
+
+</html>

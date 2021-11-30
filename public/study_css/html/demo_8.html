@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_8</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <style>
+    .element {
+      border: 1px solid red;
+      margin: 100px;
+    }
+
+    #parent {
+      border: none;
+      margin-top: 100px;
+    }
+
+    #child {
+      background-color: powderblue;
+      margin-top: 50px
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+    }
+
+    function change(self) {
+      // alert(self.checked);
+
+      document.getElementById("lbl-collapsing").textContent = self.checked;
+      // document.getElementById("lbl-collapsing").innerHTML = self.checked;
+      // document.getElementById("lbl-collapsing").innerText = self.checked;
+
+      if (self.checked) {
+        document.getElementById("parent").style.border = "1px solid tomato";
+      } else {
+        document.getElementById("parent").style.border = "none";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">마진 겹칩 (Margin-Collapsing) 현상</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <div class="element">Hello World</div>
+    <div class="element">Hello World</div>
+  </div>
+  <hr>
+  <h3>부모 엘리먼트가 시각적인 효과가 없어질때 마진 겹침 현상이 일어난다.</h3>
+  <div id="parent">
+    <div id="child">Hello World</div>
+  </div>
+  <label id="lbl-collapsing" for="collapsing">false</label>
+  <input id="collapsing" name="collapsing" type="checkbox" onclick="change(this)">
+</body>
+
+</html>

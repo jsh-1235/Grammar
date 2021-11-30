@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_11</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <style>
+    img {
+      float: right;
+      width: 200px;
+      height: 150px;
+      margin: 0px;
+    }
+
+    .paragraph {
+      border: 1px solid gray;
+      clear: none;
+    }
+  </style>
+
+  <script>
+
+    function change(self) {
+      var elements = window.document.getElementsByClassName("paragraph");
+
+      for (const key in elements) {
+        if (elements.hasOwnProperty(key)) {
+          const element = elements[key];
+
+          element.style.clear = self.value;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Float Property</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <img src="../../images/css.png" title="CSS" alt="floating">
+    <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio velit rem odit! Voluptatem
+      provident eum dolore ex a dolores error ipsa aliquid molestias, optio, architecto quos voluptate nesciunt,
+      accusantium sapiente.</p>
+    <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio velit rem odit! Voluptatem
+      provident eum dolore ex a dolores error ipsa aliquid molestias, optio, architecto quos voluptate nesciunt,
+      accusantium sapiente.</p>
+  </div>
+  <div>
+    <label for="clear1"><input id="clear1" name="clear" type="radio" value="none" checked onclick="change(this)">clear
+      none</label>
+    <label for="clear2"><input id="clear2" name="clear" type="radio" value="both" onclick="change(this)">clear
+      both</label>
+  </div>
+</body>
+
+</html>

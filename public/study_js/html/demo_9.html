@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_9</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <script>
+    function func1() {
+      var pattern1 = /a/;
+
+      // 정규 표현식 객체 생성자
+      var pattern2 = new RegExp('a');
+
+      // console.log(pattern1 == pattern2);  // 동등 연산자
+      // console.log(pattern1 === pattern2);  // 일치 연산자
+
+      // console.log(pattern1.exec('abcdefg'));
+      // console.log(pattern1.exec('123456'));
+
+      var result1 = pattern2.exec('abcdefg');
+      var result2 = pattern2.test('abcdefg');   // true or false
+      var result3 = pattern2.exec('123456');
+      var result4 = pattern2.test('123456');
+
+      console.log(result1);
+      console.log(result2);
+
+      console.log(result3);
+      console.log(result4);
+    }
+
+    function func2() {
+      var pattern1 = /a/;
+      var pattern2 = new RegExp('a');
+
+      var result1 = 'abcdefg_abcdefg'.match(pattern1);
+      var result2 = 'abcdefg'.replace(pattern1, 'A');
+
+      console.log(result1);
+      console.log(`${result1[0]} : ${result1.index} : ${result1.input} : ${result1.groups} : ${result1.length}`);
+      console.log(result2);
+    }
+
+    function func3() {
+      // 정규 표현식 (Regular Expression)
+      // 정규 표현식은 컴파일(Compile)과 실행(Execution) 단계로 나뉘어 진다.
+      // 패턴 옵션
+
+      // 정규 표현식 리터럴
+      var pattern1 = /a/;
+      var pattern2 = /a/i;  // 대소문자를 구분하지 않는다.
+      var pattern3 = /a/ig;
+
+      var result1 = 'Abcdefg'.match(pattern1);
+      var result2 = 'Abcdefg'.match(pattern2);
+      var result3 = 'Abcdefg_abcdefg'.match(pattern3);
+      var result4 = 'Abcdefg_abcdefg'.replace(pattern3, 'T');
+
+      console.log(result1);
+      console.log(result2);
+      console.log(result3);
+      console.log(result4);
+    }
+
+    function func4() {
+      var pattern = /(\w+)\s(\w+)/;
+
+      var str = 'I am a boy.';
+
+      var result1 = str.replace(pattern, "$1 : $2");
+      var result2 = str.replace(pattern, "$2 : $1");
+
+      console.log(result1);
+      console.log(result2);
+    }
+
+    function formatting(content) {
+      var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim;
+
+      var result = content.replace(urlPattern, function (url) {
+        return '<a href="' + url + '">' + url + '</a>';
+      });
+
+      return result;
+    }
+
+    function func5() {
+      var url = formatting('생활코딩 : http://opentutorials.org/course/1 입니다.');
+
+      document.getElementById('result').innerHTML = url;
+    }
+
+    window.onload = function () {
+
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">정규 표현식 (Regular Expression)</h1>
+  <div>
+    <a class="menu" href="/study_js">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button onclick="func1()">func1</button>
+  <button onclick="func2()">func2</button>
+  <button onclick="func3()">func3</button>
+  <button onclick="func4()">func4</button>
+  <button onclick="func5()">func5</button>
+  <hr>
+  <div id="result">
+  </div>
+</body>
+
+</html>

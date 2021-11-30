@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_15</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap" rel="stylesheet">
+
+  <style>
+    .btn {
+      text-decoration: none;
+      font-size: 2rem;
+      color: white;
+      padding: 10px 20px 10px 20px;
+      margin: 20px;
+      display: inline-block;
+      border-radius: 8px;
+      transition: all 0.1s;
+      text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+      font-family: 'Vampiro One', cursive;
+    }
+
+    .btn:active {
+      transform: translateY(3px);
+    }
+
+    .btn.blue {
+      background-color: #1f75d9;
+      border-bottom: 5px solid #165195;
+    }
+
+    .btn.blue:hover {
+      color: #1f75d9;
+    }
+
+    .btn.blue:active {
+      border-bottom: 2px solid #165195;
+    }
+
+    .btn.red {
+      background-color: #ff521e;
+      border-bottom: 5px solid #c1370e;
+    }
+
+    .btn.red:hover {
+      color: #ff521e;
+    }
+
+    .btn.red:active {
+      border-bottom: 2px solid #c1370e;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Buttons</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <a class="btn blue" href="#blue">blue</a>
+    <a class="btn red" href="#red">red</a>
+  </div>
+
+  <div>
+    <a class="btn blue" href="#blue">Lorem ipsum dolor sit amet.</a>
+    <a class="btn red" href="#red">Lorem ipsum dolor sit amet.</a>
+    <a class="btn blue" href="#blue">Lorem ipsum dolor sit amet.</a>
+    <a class="btn red" href="#red">Lorem ipsum dolor sit amet.</a>
+  </div>
+</body>
+
+</html>

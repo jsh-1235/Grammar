@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_18</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    #img1 {
+      filter: blur(5px);
+    }
+
+    #img2 {
+      filter: brightness(20%);
+    }
+
+    #img3 {
+      filter: contrast(200%);
+    }
+
+    #img4 {
+      filter: drop-shadow(8px 8px 10px red);
+    }
+
+    #img5 {
+      filter: grayscale(100%);
+    }
+
+    #img6 {
+      filter: hue-rotate(90deg);
+    }
+
+    #img7 {
+      filter: invert(100%);
+    }
+
+    #img8 {
+      filter: opacity(20%);
+    }
+
+    #img9 {
+      filter: saturate(800%);
+    }
+
+    #img10 {
+      filter: sepia(100%);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: center;
+    }
+
+    .item {
+      /* width: 400px; */
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 100px;
+      align-self: auto;
+    }
+
+    .img-container {
+      position: relative;
+    }
+
+    .img-text {
+      position: relative;
+      margin: 0px;
+      padding: 0px;
+      bottom: 24px;
+      background-color: black;
+      color: white;
+      filter: opacity(50%);
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .img-container {
+      transition: all 1s;
+    }
+
+    .img-container:hover {
+      filter: invert(100%);
+      /* filter: grayscale(100%); */
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Filter</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="item">
+      <img class="img-container" src="../../images/filter.jpg" title="filter" alt="filter">
+      <div class="img-text">
+        Original
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img1" src="../../images/filter.jpg" title="blur" alt="blur">
+      <div class="img-text">
+        blur
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img2" src="../../images/filter.jpg" title="brightness" alt="brightness">
+      <div class="img-text">
+        brightness
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img3" src="../../images/filter.jpg" title="contrast" alt="contrast">
+      <div class="img-text">
+        contrast
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img4" src="../../images/filter.jpg" title="drop-shadow" alt="drop-shadow">
+      <div class="img-text">
+        drop-shadow
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img5" src="../../images/filter.jpg" title="grayscale" alt="grayscale">
+      <div class="img-text">
+        grayscale
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img6" src="../../images/filter.jpg" title="hue-rotate" alt="hue-rotate">
+      <div class="img-text">
+        hue-rotate
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img7" src="../../images/filter.jpg" title="invert" alt="invert">
+      <div class="img-text">
+        invert
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img8" src="../../images/filter.jpg" title="opacity" alt="opacity">
+      <div class="img-text">
+        opacity
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img9" src="../../images/filter.jpg" title="saturate" alt="saturate">
+      <div class="img-text">
+        saturate
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-container" id="img10" src="../../images/filter.jpg" title="sepia" alt="sepia">
+      <div class="img-text">
+        sepia
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
