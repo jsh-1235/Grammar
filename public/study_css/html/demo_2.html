@@ -14,6 +14,10 @@
       color: red;
     }
 
+    ul span {
+      color: blue;
+    }
+
     /* 부모-자식 관계 선택자 */
     #lecture>li {
       border: 1px solid orange;
@@ -38,9 +42,20 @@
   <hr>
   <div>
     <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>Javascript</li>
+      <li><span>HTML</span></li>
+      <li><span>CSS</span></li>
+      <li><span>Javascript</span></li>
+      <li>
+        Class
+        <ol>
+          <li>
+            <span>Property</span>
+          </li>
+          <li>
+            <span>Method</span>
+          </li>
+        </ol>
+      </li>
     </ul>
   </div>
   <hr>
