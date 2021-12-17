@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_2</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        function fn(person) {
+          person.name = "lee";
+        }
+
+        var obj1 = { name: "kim" };
+
+        console.log(obj1.name);
+
+        fn(obj1);
+
+        console.log(obj1.name);
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        function fn(person) {
+          person.name = "lee";
+
+          return person;
+        }
+
+        var obj1 = { name: "kim" };
+
+        var obj2 = fn(Object.assign({}, obj1));
+
+        console.log(obj1.name, obj2.name);
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        function fn(person) {
+
+          person = Object.assign({}, person);
+
+          person.name = "lee";
+
+          return person;
+        }
+
+        var obj1 = { name: "kim" };
+
+        var obj2 = fn(obj1);
+
+        console.log(obj1.name, obj2.name);
+      });
+
+      document.getElementById("btn4").addEventListener("click", function (event) {
+        // Immutable API
+
+        var a = [1, 2];
+
+        var b = a;
+        var c = a;
+
+        a.push(3);
+
+        console.log(a === b, a === c);
+
+        var d = a.concat(4);
+
+        console.log(d === a, d === b, d === c);
+        console.log(d, a, b, c);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">불변의 함수</h1>
+  <div>
+    <a class="menu" href="/study_immutable">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+  <button class="btn" id="btn4" value="func4">func4</button>
+</body>
+
+</html>

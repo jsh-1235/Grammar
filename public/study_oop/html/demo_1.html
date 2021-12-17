@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    window.addEventListener("load", function () {
+      function display(event) {
+        alert(event.target.value);
+      }
+
+      //--------------------------------------------------------------------------
+      // document.querySelector("#b1").addEventListener("click", display);
+      // document.querySelector("#b2").addEventListener("click", display);
+      // document.querySelector("#b3").addEventListener("click", display);
+
+      //--------------------------------------------------------------------------
+      let buttons = document.querySelectorAll(".btn");
+
+      buttons.forEach(element => {
+        element.addEventListener("click", display);
+      });
+
+      // --------------------------------------------------------------------------
+      // for (const key in buttons) {
+      //   if (Object.hasOwnProperty.call(buttons, key)) {
+      //     const element = buttons[key];
+      //     element.addEventListener("click", display);
+      //   }
+      // }
+
+      var users = {
+        name: "jsh",
+        age: 38,
+        jab: "programmer",
+        show: function () {
+          console.log(`name : ${this.name} age : ${this.age} jab : ${this.jab}`)
+        }
+      }
+
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        for (element in users) {
+          console.log(typeof element, element, users[element]);
+        }
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        users.show();
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        if (typeof (users.show) === 'function') {
+          console.log('function');
+        }
+      });
+
+      // var calculator = {
+      //     num1: 10,
+      //     num2: 20,
+      //     sum: function (a, b) {
+      //         return a + b;
+      //     }
+      // }
+
+      var calculator = {
+        num1: 10,
+        num2: 20,
+        sum: function () {
+          return this.num1 + this.num2;
+        }
+      }
+
+      document.getElementById("btn4").addEventListener("click", function (event) {
+        // console.log(calculator.sum(calculator.num1, calculator.num2));
+
+        console.log(calculator.sum());
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Object</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="b1" value="func1">func1</button>
+  <button class="btn" id="b2" value="func2">func2</button>
+  <button class="btn" id="b3" value="func3">func3</button>
+  <button class="btn" id="b4" value="func4">func4</button>
+  <hr>
+  <button id="btn1" value="func1">func1</button>
+  <button id="btn2" value="func2">func2</button>
+  <button id="btn3" value="func3">func3</button>
+  <button id="btn4" value="func4">func4</button>
+</body>
+
+</html>

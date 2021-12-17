@@ -1,0 +1,23 @@
+extends layout
+
+block style
+  style.
+    li, a {
+      font-size: 1.5rem;
+      margin : 5px;
+    }
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    a(href="/") Home
+  hr
+  div
+    ol
+      li
+        a(href="/study_redux/html/demo_1.html") Without Redux
+      li
+        a(href="/study_redux/html/demo_2.html") With Redux
+      li
+        a(href="/study_redux/html/demo_3.html") 글 쓰기

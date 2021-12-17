@@ -1,0 +1,29 @@
+extends layout
+
+block style
+  style.
+    li, a {
+      font-size: 1.5rem;
+      margin : 5px;
+    }
+
+    .small {
+      font-size: 0.1rem;
+    }
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    a(href="/") Home
+  hr
+  div
+    p= sum
+  div
+    ul
+      each element, key in numbers
+        //- li= key #{welcome[key]}
+        li #{element} (key:#{key} value:#{numbers[key]})
+  hr
+  p(class="small") RETURN

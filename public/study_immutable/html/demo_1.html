@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        // 상수 변수
+        const number = 1;
+
+        console.log(number);
+
+        // Uncaught TypeError: Assignment to constant variable.
+
+        try {
+          number = 2;
+        }
+        catch (e) {
+          console.log(e);
+        }
+
+        console.log(number);
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        // Primitive : Number, String, Boolean, Null, Undefined, Symbol
+        // Object : Object, Array, Function
+        const number1 = 1;
+        const number2 = 1;
+
+        console.log(number1 === number1);   // True
+
+        const obj1 = { name: 'jsh' };
+        const obj2 = { name: 'jsh' };
+
+        console.log(obj1 === obj2);   // False
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        var number1 = 1;
+        var number2 = 1;
+        var number3 = number1;
+        number3 = 2;
+        console.log(number1, number2, number3);
+
+        const obj1 = { name: 'jsh' };
+        const obj2 = { name: 'jsh' };
+        const obj3 = obj2;
+        obj3.name = "kam";
+        console.log(obj1.name, obj2.name, obj2.name);
+      });
+
+      document.getElementById("btn4").addEventListener("click", function (event) {
+        const obj1 = { name: 'jsh' };
+        const obj2 = Object.assign({}, obj1);
+
+        obj2.name = "kam";
+
+        console.log(obj1.name === obj2.name, obj1.name, obj2.name);
+      });
+
+      document.getElementById("btn5").addEventListener("click", function (event) {
+        // Nested Object
+        const obj1 = { name: 'jsh', score: [1, 2, 3] };
+        const obj2 = Object.assign({}, obj1);
+
+        console.log(obj1.score, obj2.score, obj1 === obj2, obj1.score === obj2.score);
+
+        // obj2.score = [4, 5, 6];
+
+        obj2.score[0] = 100;
+        obj2.score.push(200);
+
+        console.log(obj1.score, obj2.score);
+      });
+
+      // document.getElementById("btn6").addEventListener("click", function (event) {
+      //   // Nested Object
+      //   const obj1 = { name: 'jsh', score: [1, 2, 3] };
+      //   const obj2 = Object.assign({}, obj1);
+      //   obj2.score = obj2.score.concat();
+
+      //   console.log(obj1.score, obj2.score, obj1 === obj2, obj1.score === obj2.score);
+
+      //   obj2.score[0] = 100;
+      //   obj2.score.push(200);
+
+      //   console.log(obj1.score, obj2.score);
+      // });
+
+      document.getElementById("btn6").addEventListener("click", function (event) {
+        const obj1 = { name: "jsh", score: [1, 2, 3] };
+        const obj2 = Object.assign({}, obj1);
+
+        console.log(obj1.score, obj2.score, obj1 === obj2, obj1.score === obj2.score);
+
+        obj2.score = obj1.score.concat();
+
+        console.log(obj1.score, obj2.score, obj1 === obj2, obj1.score === obj2.score);
+
+        obj2.score[0] = 100;
+        obj2.score[1] = 200;
+        obj2.score[2] = 300;
+        obj2.score.push(400);
+
+        console.log(obj1.score, obj2.score, obj1 === obj2, obj1.score === obj2.score);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">이름 및 내용의 불변성</h1>
+  <div>
+    <a class="menu" href="/study_immutable">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+  <button class="btn" id="btn4" value="func4">func4</button>
+  <button class="btn" id="btn5" value="func5">func5</button>
+  <button class="btn" id="btn6" value="func6">func6</button>
+  <hr>
+  <dl>
+    <dt>Object</dt>
+    <dd>Array</dd>
+    <dd>Function</dd>
+  </dl>
+  <dl>
+    <dt>Primitive</dt>
+    <dd>Number</dd>
+    <dd>String</dd>
+    <dd>Boolean</dd>
+    <dd>Null</dd>
+    <dd>Undefined</dd>
+    <dd>Symbol</dd>
+  </dl>
+</body>
+
+</html>

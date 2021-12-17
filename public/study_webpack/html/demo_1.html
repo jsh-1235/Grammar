@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    .container {
+      border: 5px solid black;
+      padding: 10px;
+    }
+  </style>
+
+  <script src="../without_module_js/hello.js"></script>
+  <script src="../without_module_js/world.js"></script>
+
+  <script>
+    window.onload = function () {
+      document.getElementById("root").innerHTML = word;
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Without Module</h1>
+  <div>
+    <a class="menu" href="/study_webpack">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div id="root">
+  </div>
+</body>
+
+</html>

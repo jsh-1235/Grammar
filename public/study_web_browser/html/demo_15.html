@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_15</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    label {
+      display: block;
+      padding: 10px;
+    }
+
+    .legend {
+      display: inline-block;
+      width: 60px;
+      text-align: left;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script>
+    window.addEventListener("load", function (e) {
+      document.querySelector("#func1").addEventListener('click', function (event) {
+        let target1 = document.getElementById("target1");
+
+        console.log(target1.firstChild.nodeType, target1.firstChild.nodeName, target1.firstChild.data);
+      });
+
+      document.querySelector("#func2").addEventListener('click', function (event) {
+        let target2 = document.getElementById("target2");
+
+        console.log(target2.childNodes[0].nodeType, target2.childNodes[0].nodeName, target2.childNodes[0].data);
+      });
+
+      document.querySelector("#func3").addEventListener('click', function (event) {
+        let target1 = document.getElementById("target1");
+
+        // target1.firstChild.nodeValue = "changed";
+
+        target1.firstChild.data = "changed";
+      });
+
+      var target = document.getElementById("target");
+      var source = document.getElementById("source");
+      var start = document.getElementById("start");
+      var end = document.getElementById("end");
+    });
+
+    function appendData() {
+      console.log(target.childNodes.length, source.value);
+
+      target.firstChild.appendData(source.value);
+    }
+
+    function deleteData() {
+      console.log(start.value, end.value);
+
+      target.firstChild.deleteData(start.value, end.value);
+    }
+
+    function insertData() {
+      console.log(start.value, source.value);
+
+      target.firstChild.insertData(start.value, source.value);
+    }
+
+    function replaceData() {
+      console.log(start.value, end.value, source.value);
+
+      target.firstChild.replaceData(start.value, end.value, source.value);
+    }
+
+    function substringData() {
+      alert(target.firstChild.substringData(start.value, end.value))
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Text 객체</h1>
+  <div>
+    <a class="menu" id="anchor" href="/study_web_browser">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <p3>텍스트 노드는 DOM에서 실질적인 데이터가 저장되는 객체이이다.</p3>
+  <p>Node -> CharacterData -> Text -> Comment</p>
+  <hr>
+  <button id="func1">get target1</button>
+  <button id="func2">get target2</button>
+  <button id="func3">set target3</button>
+  <div>
+    <ol>
+      <li>appendData()</li>
+      <li>deleteData()</li>
+      <li>insertData()</li>
+      <li>replaceData()</li>
+      <li>substringData()</li>
+    </ol>
+  </div>
+  <hr>
+  <div>
+    <p id="target1">
+      N1
+      <span>target1</span>
+    </p>
+    <p id="target2">
+      N2
+      <span>target2</span>
+    </p>
+  </div>
+  <hr>
+  <div>
+    <p id="target">Cording everybody!</p>
+    <label for="source"><span class="legend">source</span><input id="source" type="text" value="JavaScript"></label>
+    <label for="start"><span class="legend">start</span><input id="start" type="text" value="5"></label>
+    <label for="end"><span class="legend">end</span><input id="end" type="text" value="5"></label>
+    <button onclick="appendData()">appendData</button>
+    <button onclick="deleteData()">deleteData</button>
+    <button onclick="insertData()">insertData</button>
+    <button onclick="replaceData()">replaceData</button>
+    <button onclick="substringData()">substringData</button>
+  </div>
+</body>
+
+</html>

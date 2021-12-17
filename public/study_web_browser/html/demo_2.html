@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_2</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
+
+  <style>
+  </style>
+
+  <script>
+    function func1() {
+      var elements = document.getElementsByTagName('li');
+
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.style.color = 'orange';
+      }
+    }
+
+    function func2() {
+      var elements = document.getElementsByClassName('subject');
+
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.style.color = 'red';
+      }
+    }
+
+    function func3() {
+      document.getElementById('selected').style.color = 'green';
+    }
+
+    function func4() {
+      document.querySelector('li').style.fontSize = "10rem";
+
+      // document.querySelectorAll('li').forEach(function (element, i) {
+      //   console.log(i, element);
+      //   element.style.fontSize = "3rem";
+      // });
+    }
+
+    function func5() {
+      document.querySelectorAll('ol li').forEach(function (element, i) {
+        console.log(i, element);
+
+        element.style.color = 'blue';
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">DOM : Document Object Model</h1>
+  <div>
+    <a class="menu" href="/study_web_browser">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <p3>제어할 대상 찾기</p3>
+  <button value="func1" onclick="func1()">getElementsByTagName</button>
+  <button value="func2" onclick="func2()">getElementsByClassName</button>
+  <button value="func3" onclick="func3()">getElementById</button>
+  <button value="func4" onclick="func4()">querySelector</button>
+  <button value="func4" onclick="func5()">querySelectorAll</button>
+  <hr />
+  <ul>
+    <li class="subject">HTML</li>
+    <li class="subject">CSS</li>
+    <li class="subject">JavaScript</li>
+  </ul>
+  <ol>
+    <li id="selected">HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ol>
+  <div id="result1"></div>
+  <hr>
+  <div>
+    <ul>
+      <li>
+        Node
+        <ul>
+          <li>
+            Document
+            <ul>
+              <li>HTMLDocument</li>
+            </ul>
+          </li>
+          <li>
+            CharacterData
+            <ul>
+              <li>
+                Text
+                <ul>
+                  <li>Comment</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Element
+            <ul>
+              <li>
+                HTMLElement
+                <ul>
+                  <li>HTMLHeadElement</li>
+                  <li>HTMLLIElement</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Attr</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

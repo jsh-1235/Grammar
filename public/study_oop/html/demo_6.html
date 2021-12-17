@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_6</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    window.addEventListener("load", function () {
+      var date = new Date();
+
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        console.log(Date.prototype.constructor);
+
+        console.log(Date.prototype.constructor === Date);
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        const _date = new date.constructor();
+
+        console.log(_date);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">prototype vs __proto__</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+</body>
+
+</html>

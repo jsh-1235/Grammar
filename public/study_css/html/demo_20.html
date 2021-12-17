@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_20</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
+
+  <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: center;
+    }
+
+    .item {
+      width: 100px;
+      height: 100px;
+      background-color: deepskyblue;
+      margin: 1px;
+      color: white;
+    }
+
+    .container>div {
+      transition: all 3s;
+      /* transform-origin: 0 100% 0; */
+    }
+
+    #transform1:hover {
+      transform: scale(2, 0.5);
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+
+    #transform2:hover {
+      transform: scale(0.5, 2);
+    }
+
+    #transform3:hover {
+      transform: translate(50%, 0);
+    }
+
+    #transform4:hover {
+      transform: translate(0, 50%);
+    }
+
+    #transform5:hover {
+      transform: rotateX(45deg);
+    }
+
+    #transform6:hover {
+      transform: rotateY(90deg);
+    }
+
+    #transform7:hover {
+      transform: rotateZ(180deg);
+    }
+
+    #transform8:hover {
+      transform: rotate3d(1, 2.0, 3.0, 90deg);
+    }
+
+    #transform9:hover {
+      transform: translateX(10px) rotate(10deg) translateY(5px);
+    }
+
+    #transform10:hover {
+      transform: translate3d(12px, 50%, 3em);
+    }
+
+    #transform11:hover {
+      transform: skew(30deg, 20deg);
+    }
+
+    #transform12:hover {
+      transform: matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+    }
+  </style>
+
+  <script>
+    /* Function values */
+    // transform: matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+    // transform: translate(12 px, 50 % );
+    // transform: translateX(2 em);
+    // transform: translateY(3 in );
+    // transform: scale(2, 0.5);
+    // transform: scaleX(2);
+    // transform: scaleY(0.5);
+    // transform: rotate(0.5 turn);
+    // transform: skew(30 deg, 20 deg);
+    // transform: skewX(30 deg);
+    // transform: skewY(1.07 rad);
+    // transform: matrix3d(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0);
+    // transform: translate3d(12 px, 50 % , 3 em);
+    // transform: translateZ(2 px);
+    // transform: scale3d(2.5, 1.2, 0.3);
+    // transform: scaleZ(0.3);
+    // transform: rotate3d(1, 2.0, 3.0, 10 deg);
+    // transform: rotateX(10 deg);
+    // transform: rotateY(10 deg);
+    // transform: rotateZ(10 deg);
+    // transform: perspective(17 px);
+
+    // /* Multiple function values */
+    // transform: translateX(10 px) rotate(10 deg) translateY(5 px);
+
+    // /* Global values */
+    // transform: inherit;
+    // transform: initial;
+    // transform: unset;
+  </script>
+
+  <script>
+    var toggle = false;
+
+    function scaleChanged(self) {
+      let items = document.getElementsByClassName("item");
+
+      for (const key in items) {
+        if (items.hasOwnProperty(key)) {
+          const element = items[key];
+
+          if (!toggle) {
+            element.style.transform = "matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0)";
+          } else {
+            element.style.transform = "inherit";
+          }
+        }
+      }
+
+      toggle = !toggle;
+
+      //alert(toggle);
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Transform (변형)</h1>
+  <div>
+    <a class="menu" href="/study_css">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="item" id="transform1"></div>
+    <div class="item" id="transform2"></div>
+    <div class="item" id="transform3"></div>
+    <div class="item" id="transform4"></div>
+    <div class="item" id="transform5"></div>
+    <div class="item" id="transform6"></div>
+    <div class="item" id="transform7"></div>
+    <div class="item" id="transform8"></div>
+    <div class="item" id="transform9"></div>
+    <div class="item" id="transform10"></div>
+    <div class="item" id="transform11"></div>
+    <div class="item" id="transform12"></div>
+  </div>
+  <hr />
+  <div>
+    <button id="btn1" name="scale" onclick="scaleChanged(value)">scale</button>
+  </div>
+  <hr>
+  <p>matrix(a, b, c, d, tx, ty) 는 matrix3d (en-US)(a, b, 0, 0, c, d, 0, 0, 0, 0, 1, 0, tx, ty, 0, 1) 를 짧게 쓴 것입니다.</p>
+  <div>
+    <pre style="display:inline-flex">
+      a c tx
+      b d ty
+      0 0 1
+    </pre>
+    <pre style="display:inline-flex">
+      a c 0 tx
+      b d 0 ty
+      0 0 1 0
+      0 0 0 1
+    </pre>
+  </div>
+</body>
+
+</html>

@@ -9,11 +9,12 @@ var usersRouter = require("./routes/users");
 var study_html = require("./routes/study_html");
 var study_css = require("./routes/study_css");
 var study_js = require("./routes/study_js");
-// var study_oop = require("./routes/study_oop");
-// var study_immutable = require("./routes/study_immutable");
-// var study_redux = require("./routes/study_redux");
-// var study_npm = require("./routes/study_npm");
-// var study_webpack = require("./routes/study_webpack");
+var study_web_browser = require("./routes/study_web_browser");
+var study_oop = require("./routes/study_oop");
+var study_immutable = require("./routes/study_immutable");
+var study_redux = require("./routes/study_redux");
+var study_npm = require("./routes/study_npm");
+var study_webpack = require("./routes/study_webpack");
 
 var app = express();
 
@@ -33,12 +34,12 @@ app.use("/users", usersRouter);
 app.use("/study_html", study_html);
 app.use("/study_css", study_css);
 app.use("/study_js", study_js);
-// app.use("/study_web_browser", study_web_browser);
-// app.use("/study_oop", study_oop);
-// app.use("/study_immutable", study_immutable);
-// app.use("/study_redux", study_redux);
-// app.use("/study_npm", study_npm);
-// app.use("/study_webpack", study_webpack);
+app.use("/study_web_browser", study_web_browser);
+app.use("/study_oop", study_oop);
+app.use("/study_immutable", study_immutable);
+app.use("/study_redux", study_redux);
+app.use("/study_npm", study_npm);
+app.use("/study_webpack", study_webpack);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

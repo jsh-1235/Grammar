@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_3</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    class Person {
+      constructor(name, age) {
+        console.log("Person constructor", name, age);
+
+        this.name = name;
+        this.age = age;
+      }
+
+      show() {
+        console.log(`[class] name : ${this.name} age : ${this.age}`)
+      }
+    }
+
+    class Man extends Person {
+      constructor(name, age, job) {
+        super(name, age);
+        this.job = job;
+
+        console.log("Man constructor", name, age, job);
+      }
+
+      work() {
+        console.log(`${this.name}' job : ${this.job}`)
+      }
+    }
+
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        console.log(new Person("jsh", "38"));
+
+        const person1 = new Person("jsh", "38");
+
+        person1.show();
+
+        const person2 = new Person("kar", "27");
+
+        person2.show();
+
+        console.log(person1 === person2);
+
+        console.log(typeof (person1) === typeof (person2));
+
+        console.log(typeof (person1), typeof (person1));
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        const person1 = new Person("jsh", "38");
+
+        person1.show = function () {
+          console.log(`[this] name : ${this.name} age : ${this.age}`)
+        }
+
+        person1.show();
+
+        const person2 = new Person("kar", "27");
+
+        person2.show();
+      });
+
+      // Inheritance (상속)
+      // Super class => sub class
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        const man = new Man("egoing", "44", 'programmer');
+
+        man.work();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Class</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+</body>
+
+</html>

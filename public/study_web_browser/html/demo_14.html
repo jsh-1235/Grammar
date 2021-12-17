@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_14</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script>
+    let count = 0;
+    window.addEventListener("load", function (e) {
+      document.querySelector("#func1").addEventListener('click', function (event) {
+        console.log(window.document);
+        console.log(window.document.childNodes);
+        console.log(window.document.childNodes[0].nodeType, document.childNodes[0]);
+        console.log(window.document.childNodes[1].nodeType, window.document.childNodes[1]);
+
+        let p = document.createElement('p');
+
+        p.appendChild(document.createTextNode(`document_${++count}`));
+
+        document.querySelector('#target').appendChild(p);
+      });
+
+      document.querySelector("#func2").addEventListener('click', function (event) {
+        alert(document.title);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Document 객체</h1>
+  <div>
+    <a class="menu" id="anchor" href="/study_web_browser">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <p3>HTMLDocument 객체</p3>
+  <hr>
+  <button id="func1">create document</button>
+  <button id="func2">get document</button>
+  <hr>
+  <div id="target"></div>
+</body>
+
+</html>

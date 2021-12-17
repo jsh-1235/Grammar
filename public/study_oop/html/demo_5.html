@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_5</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    .btn {
+      min-width: 100px;
+      width: 20%
+    }
+  </style>
+
+  <script>
+    var kim = { name: 'kim', first: 10, second: 20 };
+    var lee = { name: 'lee', first: 5, second: 30 };
+
+    function sum(prefix) {
+      return this.name + prefix + (this.first + this.second);
+    }
+
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        // call function
+
+        console.log(sum.call(kim, '==>'));
+        console.log(sum.call(lee, ' : '));
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        // bind function
+
+        var kimSum = sum.bind(kim, '==>');
+
+        console.log(kimSum());
+
+        var leeSum = sum.bind(lee, ' : ');
+
+        console.log(leeSum());
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        // apply function
+
+        const numbers = [1, 2, 3, 4, 5];
+
+        const max = Math.max.apply(null, numbers);
+        const min = Math.min.apply(null, numbers);
+
+        console.log(max, min);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">객체와 함수</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">call</button>
+  <button class="btn" id="btn2" value="func2">bind</button>
+  <button class="btn" id="btn3" value="func3">apply</button>
+</body>
+
+</html>

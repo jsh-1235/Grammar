@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_4</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
+
+  <style>
+  </style>
+
+  <script>
+    function show(container, contents) {
+      let html = "<ul>";
+
+      for (let i = 0; i < contents.length; i++) {
+        html += `<li>${contents[i]}</li>`;
+      }
+
+      html += "</ul>";
+
+      document.getElementById(container).innerHTML = html;
+    }
+
+    function func1() {
+      // DOM Tree
+      // 모든 엘리먼트는 HTMLElement의 자식이다.
+
+      let results = [];
+
+      let target = document.getElementById("list");
+      console.log(target.constructor.name);
+      results.push(target.constructor.name);
+
+      target = document.getElementById("anchor");
+      console.log(target.constructor.name);
+      results.push(target.constructor.name);
+
+      target = document.getElementById("button");
+      console.log(target.constructor.name);
+      results.push(target.constructor.name);
+
+      show("result", results);
+    }
+
+    function func2() {
+      let elements = document.getElementsByTagName("li");
+
+      console.log(elements.constructor.name);
+
+      show("result", [elements.constructor.name]);
+    }
+
+    function func3() {
+      console.group("before");
+
+      var list = document.getElementsByTagName("li");
+
+      for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        console.log(list[i]);
+      }
+
+      console.groupEnd();
+
+      console.group("after");
+
+      if (list[0]) {
+        list[0].parentNode.removeChild(list[0]);
+      }
+
+      for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        console.log(list[i]);
+      }
+
+      console.groupEnd();
+    }
+
+    function func4() {
+      var ul = document.getElementsByTagName("ul");
+
+      console.log(ul[0]);
+
+      var li = document.createElement('li');
+
+      var text = document.createTextNode('Hello World');
+
+      li.appendChild(text);
+
+      // 노드의 마지막 자식으로 주어진 엘리먼트가 추가된다.
+      ul[0].appendChild(li);
+    }
+
+    function func5() {
+      var ul = document.getElementsByTagName("ul");
+
+      console.log(ul[0]);
+
+      var li = document.createElement('li');
+
+      var text = document.createTextNode('Hello World');
+
+      li.appendChild(text);
+
+      // 두번째 인자로 전달된 엘리먼트 앞에 새로 추가된 엘리먼트가 추가된다.
+      ul[0].insertBefore(li, ul[0].firstChild);
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Element 객체</h1>
+  <div>
+    <a id="anchor" class="menu" href="/study_web_browser">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <p3>제어할 대상 찾기</p3>
+  <button value="func2" onclick="func1()">HTMLElement</button>
+  <button id="button" onclick="func2()">HTMLCollection</button>
+  <button value="func3" onclick="func3()">remove</button>
+  <button value="func4" onclick="func4()">add - appendChild</button>
+  <button value="func4" onclick="func5()">add - insertBefore</button>
+  <hr />
+  <ul>
+    <li id="list" class="subject">HTML</li>
+    <li class="subject">CSS</li>
+    <li class="subject">JavaScript</li>
+  </ul>
+  <div id="result"></div>
+</body>
+
+</html>

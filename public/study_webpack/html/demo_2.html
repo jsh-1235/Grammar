@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_2</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    .container {
+      border: 5px solid black;
+      padding: 10px;
+    }
+  </style>
+
+  <script type="module">
+    import hello from "../with_module_js/hello.js";
+    import world from "../with_module_js/world.js";
+
+    window.onload = function () {
+      document.getElementById("root").innerHTML = hello + " " + world;
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">With Module</h1>
+  <div>
+    <a class="menu" href="/study_webpack">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <p>오래된 웹브라우저에서는 모듈을 지원하지 않는다</p>
+  </div>
+  <hr>
+  <div id="root">
+  </div>
+</body>
+
+</html>

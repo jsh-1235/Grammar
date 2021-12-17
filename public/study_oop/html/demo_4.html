@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_4</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+
+    // super object -> sub object
+
+    var superObj = { superVal: 'super' };
+
+    // var subObj = { subVal: 'sub' };
+    // subObj.__proto__ = superObj;
+
+    var subObj = Object.create(superObj);
+    subObj.subVal = "sub";
+
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        console.log('subObj.subVal : ', subObj.subVal);
+        console.log('subObj.superVal : ', subObj.superVal);
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        subObj.superVal = "sub";
+        console.log('subObj.subVal : ', subObj.subVal);
+        console.log('subObj.superVal : ', subObj.superVal);
+        console.log('superObj.superVal : ', superObj.superVal);
+      });
+
+      // 객체의 상속
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        var calc1 = {
+          num1: 10,
+          num2: 20,
+          sum: function () {
+            return this.num1 + this.num2;
+          }
+        }
+
+        var calc2 = {
+          name: 'calc2',
+          average: function () {
+            return (this.num1 + this.num2) / 2;
+          }
+        }
+
+        calc2.__proto__ = calc1;
+
+        console.log(calc2.name, calc2.sum(), calc2.average());
+        console.log(calc1.num1, calc1.num2, calc1.sum());
+      });
+
+      document.getElementById("btn4").addEventListener("click", function (event) {
+        var calc1 = {
+          num1: 10,
+          num2: 20,
+          sum: function () {
+            return this.num1 + this.num2;
+          }
+        }
+
+        console.log(calc1);
+
+        var calc2 = Object.create(calc1);
+
+        console.log(calc2);
+
+        calc2.name = "calc2";
+        calc2.average = function () {
+          return (this.num1 + this.num2) / 2;
+        }
+
+        console.log(calc2);
+
+        console.log(calc2.name, calc2.sum(), calc2.average());
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Object Inheritance</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+  <button class="btn" id="btn4" value="func4">func4</button>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_3</title>
+
+  <style>
+    .container {
+      border: 5px solid black;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Webpack</h1>
+  <div>
+    <a class="menu" href="/study_webpack">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <div>
+    <p>npm install -D webpack webpack-cli</p>
+    <p>npm install --save-dev css-loader ts-loader</p>
+    <p>npm install --save-dev html-webpack-plugin</p>
+    <p>npx webpack --entry ./src/home.js --output-path ./dist</p>
+    <p>npx webpack --config webpack.config.js</p>
+    <p>npx webpack --watch</p>
+    <p>INPUT -> PROCESS -> OUTPUT</p>
+    <p>DevServer : Live Reload / Hot module replacement</p>
+    <p>Code Splitting / Lazy Loading</p>
+  </div>
+  <hr>
+  <div id="root">
+  </div>
+  <script src="../dist/home_bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+
+  <script>
+    //======================================================
+    // window : 전역 객체
+    // BOM : navigation, screen, location, frames, history, XMLHttpRequest
+    // DOM : document
+    // Javascript Core : Object, Array, Function
+    //======================================================
+
+    window.onload = function () {
+      let images = document.getElementsByTagName("img");
+
+      for (let i = 0; i < images.length; i++) {
+
+        images[i].title = `${images[i].title} [${i + 1}]`;
+
+        console.log(images[i].title);
+      }
+
+      window.document.getElementById("inputText").addEventListener("keyup", function (e) {
+        console.log(e.code);
+
+        new_window.document.getElementById("message").innerText = this.value;
+      });
+    };
+
+    function func3() {
+      //console.log(document.body);
+
+      console.log(document.images);
+
+      console.log(document.getElementsByTagName("body"));
+    }
+
+    var profile = {
+      id: 12345,
+    };
+
+    function func4() {
+      // window 객체 (전역 객체)
+
+      let arr = window.Array();
+
+      for (let i = 0; i < 10; i++) {
+        arr.push(i);
+      }
+
+      console.log(arr);
+
+      window.alert(window.profile.id);
+    }
+
+    function func5() {
+      let id = prompt("What is your id?");
+
+      if (id) {
+        let result = confirm("ok?");
+
+        if (result) {
+          alert(id);
+        } else {
+          alert("cancel");
+        }
+      }
+    }
+
+    //-----------------------------------------------------------
+
+    function func6() {
+      let result = document.location;
+
+      document.getElementById("result1").innerHTML = `<p>${result}</p>`;
+    }
+
+    function func7() {
+      //protocol://host:port/pathname/?id=search#hash
+
+      let html = "<ul>";
+      html += `<li>protocol : ${document.location.protocol}</li>`;
+      html += `<li>host : ${document.location.host}</li>`;
+      html += `<li>port : ${document.location.port}</li>`;
+      html += `<li>pathname : ${document.location.pathname}</li>`;
+      html += `<li>search : ${document.location.search}</li>`;
+      html += `<li>hash : ${document.location.hash}</li>`;
+      html += "</ul>";
+
+      document.getElementById("result1").innerHTML = html;
+    }
+
+    function func8() {
+      // 웹 페이지 url 변경 (Redirection)
+
+      let url = "http://www.naver.com";
+
+      //window.location = url;
+
+      window.location.href = url;
+
+      //window.open(url, '_blank');
+    }
+
+    function func9() {
+      // Reload 기능
+      location.reload();
+    }
+
+    //-----------------------------------------------------------
+
+    function func10() {
+      // 표준화 기구
+      // w3C, ECMA
+      // Cross Browser Issue (호환성 문제)
+      // Netscape, IE, Chrome, Safari, Firefox
+      // 웹 표준
+
+      //console.log(navigator);
+
+      let html = "<ul>";
+      html += `<li>appName : ${window.navigator.appName}</li>`;
+      html += `<li>appVersion : ${window.navigator.appVersion}</li>`;
+      html += `<li>appCodeName : ${window.navigator.appCodeName}</li>`;
+      html += `<li>userAgent : ${window.navigator.userAgent}</li>`;
+      html += `<li>platform : ${window.navigator.platform}</li>`;
+      html += `<li>language : ${window.navigator.language}</li>`;
+      html += "</ul>";
+
+      document.getElementById("result2").innerHTML = html;
+
+      console.dir(navigator);
+    }
+
+    function func11() {
+      // 기능 테스트 : 브라우저 호환성 문제 해결 (Cross Browsing Issue)
+
+      // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+      if (!Object.keys) {
+        Object.keys = (function () {
+          "use strict";
+          var hasOwnProperty = Object.prototype.hasOwnProperty,
+            hasDontEnumBug = !{
+              toString: null,
+            }.propertyIsEnumerable("toString"),
+            dontEnums = ["toString", "toLocaleString", "valueOf", "hasOwnProperty", "isPrototypeOf",
+              "propertyIsEnumerable", "constructor"
+            ],
+            dontEnumsLength = dontEnums.length;
+
+          return function (obj) {
+            if (typeof obj !== "object" && (typeof obj !== "function" || obj === null)) {
+              throw new TypeError("Object.keys called on non-object");
+            }
+
+            var result = [],
+              prop,
+              i;
+
+            for (prop in obj) {
+              if (hasOwnProperty.call(obj, prop)) {
+                result.push(prop);
+              }
+            }
+
+            if (hasDontEnumBug) {
+              for (i = 0; i < dontEnumsLength; i++) {
+                if (hasOwnProperty.call(obj, dontEnums[i])) {
+                  result.push(dontEnums[i]);
+                }
+              }
+            }
+            return result;
+          };
+        })();
+      } else {
+        alert(Object.keys);
+      }
+    }
+
+    function func12() {
+      url = "http://www.naver.com";
+
+      window.open(url);
+    }
+
+    function func13() {
+      url = "http://www.naver.com";
+
+      window.open(url, "_self");
+    }
+
+    function func14() {
+      url = "http://www.naver.com";
+
+      window.open(url, "_blank");
+    }
+
+    function func15() {
+      url = "http://www.naver.com";
+
+      window.open(url, "ot");
+    }
+
+    function func16() {
+      url = "http://www.naver.com";
+
+      window.open(url, "_blank", "width=200, height=200, resizable=no");
+    }
+
+    //-----------------------------------------------------------
+    function winOpen() {
+      url = "./new.html";
+
+      new_window = window.open(url, "new_window", "width=400px, height=400px");
+    }
+
+    function winClose() {
+      new_window.close();
+    }
+
+    function winMessage(msg) {
+      console.log(msg);
+
+      new_window.document.getElementById("message").innerText = msg;
+    }
+
+    window.open("./new.html", "new_window", "width=400px, height=400px");
+  </script>
+</head>
+
+<body>
+  <h1 class="title">BOM : Browser Object Model</h1>
+  <div>
+    <a class="menu" href="/study_web_browser">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <p3>Window object</p3>
+  <button value="func1" onclick="(function(){alert(window.location)})();">location</button>
+  <button value="func2" onclick="window.open('http://www.google.com', '_blank')">open</button>
+  <button value="func3" onclick="func3()">func3</button>
+  <button value="func4" onclick="func4()">func4</button>
+  <button value="func5" onclick="func5()">func5</button>
+  <hr>
+  <div>
+    <img src="../../images/lego.png" title="lego" alt="lego">
+    <img src="../../images/yoga.png" title="yoga" alt="yoga">
+  </div>
+  <hr>
+  <p3>Location object</p3>
+  <button value="func6" onclick="func6()">location</button>
+  <button value="func7" onclick="func7()">location Parsing</button>
+  <button value="func8" onclick="func8()">Redirection</button>
+  <button value="func9" onclick="func9()">Reload</button>
+  <div id="result1"></div>
+  <hr>
+  <p3>navigation object</p3>
+  <button value="func10" onclick="func10()">navigator</button>
+  <button value="func11" onclick="func11()">Function Test</button>
+  <div id="result2"></div>
+  <hr>
+  <h3>창 제어</h3>
+  <button value="func12" onclick="func12()">open</button>
+  <button value="func13" onclick="func13()">open (_self)</button>
+  <button value="func14" onclick="func14()">open (_blank)</button>
+  <button value="func15" onclick="func15()">open (name)</button>
+  <button value="func15" onclick="func16()">open (_blank, 200/200/resizable)</button>
+  <div id="result3"></div>
+  <hr>
+  <h3>새 창에 접근</h3>
+  <button value="winopen" onclick="winOpen()">open</button>
+  <button value="winclose" onclick="winClose()">close</button>
+  <!-- <input type="text" onkeypress="winMessage(this.value)" /> -->
+  <input id="inputText" type="text">
+  <div id="result4"></div>
+  <hr>
+  <h3>팝업 차단</h3>
+  <p>브라우저는 같은 도메인에서만 팝업을 허용하며 사용자가 명시적으로 사용 여부를 선택할 수 있게 정책을 펴고 있다.</p>
+</body>
+
+</html>

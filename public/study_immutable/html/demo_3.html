@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_3</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        // 객체를 수정하지 못하게 하기
+
+        var obj1 = { name: 'kim', score: [1, 2, 3] };
+
+        Object.freeze(obj1);        // 객체의 프로퍼티를 얼린다.
+
+        obj1.name = 'lee';
+        obj1.city = 'seoul';
+        obj1.score.push(4);
+
+        console.log(obj1.name, obj1.city, obj1.score);
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        // 객체를 수정하지 못하게 하기
+        var obj1 = { name: 'kim', score: [1, 2, 3] };
+
+        Object.freeze(obj1);        // 객체의 프로퍼티를 얼린다.
+        Object.freeze(obj1.score);  // 객체에 포함된 배열도 얼린다.
+
+        try {
+          console.log(obj1.name, obj1.city, obj1.score);
+
+          obj1.name = 'lee';
+          obj1.city = 'seoul';
+          obj1.score.push(4);
+        } catch (e) {
+          console.log(e);
+        }
+        finally {
+          console.log(obj1.name, obj1.city, obj1.score);
+        }
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        // const vs Object.freeze
+
+        const obj1 = { name: 'kim' };   // const는 이름을 규제한다.
+
+        Object.freeze(obj1);            // freeze는 값을 규제한다.
+
+        const obj2 = { name: 'jeong' };
+
+        try {
+          obj1 = obj2;                  // Assignment to constant variable.
+
+          obj1.name = 'lee';
+        } catch (e) {
+          console.log(e);
+        }
+        finally {
+          console.log(obj1.name, obj2.name);
+        }
+      });
+
+      document.getElementById("btn4").addEventListener("click", function (event) {
+        // 원본을 복제(사본)하여 분리한다.
+
+        // 함수형 프로그래밍
+        // Pure Function
+
+        // npm install (immer), (mori)
+
+        // React : Rendering
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">객체를 불변하게 만들기 (Object.freeze)</h1>
+  <div>
+    <a class="menu" href="/study_immutable">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+  <button class="btn" id="btn4" value="func4">func4</button>
+</body>
+
+</html>

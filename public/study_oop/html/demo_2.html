@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_2</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <style>
+  </style>
+
+  <script>
+    // 생성자 함수 : constructor
+    // 객체가 만들어질 때 마다 메소드가 새로 만들어지는 문제가 있다.
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.show = function () {
+    //         console.log(`name : ${this.name} age : ${this.age}`)
+    //     }
+    // }
+
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    // 객체를 사용하는 모든 인스턴스가 공용으로 사용한는 메서드 생성 (자원 절약)
+    Person.prototype.show = function () {
+      console.log(`[prototype] name : ${this.name} age : ${this.age}`)
+    }
+
+    function Man(name, age, job) {
+      Person.call(this, name, age);
+      this.job = job;
+    }
+
+    // Man.prototype.__proto__ = Person.prototype;
+
+    Man.prototype = Object.create(Person.prototype);
+    Man.prototype.constructor = Man;
+
+    Man.prototype.work = function () {
+      console.log(`${this.name}' job : ${this.job}`)
+    }
+
+    window.addEventListener("load", function () {
+      document.getElementById("btn1").addEventListener("click", function (event) {
+        console.log(Person("jsh", "38"));
+
+        console.log(new Person("jsh", "38"));
+
+        const person1 = new Person("jsh", "38");
+
+        person1.show();
+
+        const person2 = new Person("kar", "27");
+
+        person2.show();
+
+        console.log(person1 === person2);
+
+        console.log(typeof (person1) === typeof (person2));
+
+        console.log(typeof (person1), typeof (person1));
+      });
+
+      document.getElementById("btn2").addEventListener("click", function (event) {
+        const person1 = new Person("jsh", "38");
+
+        person1.show = function () {
+          console.log(`[this] name : ${this.name} age : ${this.age}`)
+        }
+
+        person1.show();
+
+        const person2 = new Person("kar", "27");
+
+        person2.show();
+      });
+
+      document.getElementById("btn3").addEventListener("click", function (event) {
+        const man = new Man("egoing", "44", "programmer");
+        man.show();
+        man.work();
+        console.log(man.constructor);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Prototype based Language</h1>
+  <div>
+    <a class="menu" href="/study_oop">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btn1" value="func1">func1</button>
+  <button class="btn" id="btn2" value="func2">func2</button>
+  <button class="btn" id="btn3" value="func3">func3</button>
+</body>
+
+</html>
