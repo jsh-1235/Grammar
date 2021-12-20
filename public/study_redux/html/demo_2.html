@@ -14,7 +14,9 @@
     }
   </style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js" integrity="sha512-P36ourTueX/PrXrD4Auc1kVLoTE7bkWrIrkaM0IG2X3Fd90LFgTRogpZzNBssay0XOXhrIgudf4wFeftdsPDiQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/5.0.0-alpha.0/redux.min.js"
+    integrity="sha512-6WJ7yVV5HDZwZ0RT5CM3FCTgTt5qC5BlfQ9bG43y0BowT5a3GXQqDYaoZgCk+i9vuB1Yj6KdBPQAU8Ra7tV32w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
     function reducer(state, action) {
@@ -26,7 +28,7 @@
 
       var newState;
 
-      if (action.type === 'CHANGE') {
+      if (action.type === "CHANGE") {
         newState = Object.assign({}, state, { color: action.color });
       }
 
@@ -41,47 +43,48 @@
     function red() {
       var state = store.getState();
 
-      document.querySelector('#red').innerHTML = `
-                <div class="container" id="component_red" style="background-color:${state.color}">
-                    <h1>red</h1>
-                    <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color:'red'})" />
-                </div>
-                `;
+      document.querySelector("#red").innerHTML = `
+        <div class="container" id="component_red" style="background-color:${state.color}">
+          <h1>red</h1>
+          <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color: 'red'})"/>
+        </div>
+        `;
     }
 
-    store.subscribe(blue);
 
     function green() {
       var state = store.getState();
 
-      document.querySelector('#green').innerHTML = `
-                <div class="container" id="component_green" style="background-color:${state.color}">
-                    <h1>green</h1>
-                    <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color:'green'})" />
-                </div>
-                `;
+      document.querySelector("#green").innerHTML = `
+        <div class="container" id="component_green" style="background-color:${state.color}">
+          <h1>green</h1>
+          <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color: 'green'})"/>
+        </div>
+        `;
     }
 
-    store.subscribe(green);
-
-    store.subscribe(red);
 
     function blue() {
       var state = store.getState();
 
-      document.querySelector('#blue').innerHTML = `
-                <div class="container" id="component_blue" style="background-color:${state.color}">
-                    <h1>blue</h1>
-                    <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color:'blue'})" />
-                </div>
-                `;
+      document.querySelector("#blue").innerHTML = `
+        <div class="container" id="component_blue" style="background-color:${state.color}">
+          <h1>blue</h1>
+          <input type="button" value="fire" onclick="store.dispatch({type:'CHANGE', color: 'blue'})"/>
+        </div>
+        `;
     }
+
+    store.subscribe(red);
+    store.subscribe(green);
+    store.subscribe(blue);
 
     window.onload = function () {
       red();
       green();
       blue();
     }
+
   </script>
 </head>
 
@@ -91,7 +94,6 @@
     <a class="menu" href="/study_redux">Back</a>
     <a class="menu" href="/">Home</a>
   </div>
-  <hr>
   <div id="red"></div>
   <div id="green"></div>
   <div id="blue"></div>
