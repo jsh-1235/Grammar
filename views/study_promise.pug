@@ -1,0 +1,23 @@
+extends layout
+
+block style
+  style.
+    li, a {
+      font-size: 1.5rem;
+      margin : 5px;
+    }
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    a(href="/") Home
+  hr
+  div
+    ol
+      li
+        a(href="/study_promise/html/demo_1.html") Callback Hell
+      li
+        a(href="/study_promise/html/demo_2.html") Promise
+      li
+        a(href="/study_promise/html/demo_3.html") Script Load (sync/async/defer)

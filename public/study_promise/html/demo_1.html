@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link type="text/css" href="../css/style.css" rel="stylesheet">
+  <script src="../js/promise.js"></script>
+
+  <script>
+    window.onload = function () {
+      console.log("window is loaded.")
+
+      window.document.getElementById("btnStart").addEventListener("click", function (event) {
+        console.log(event.type, event.target, event.target.id, event.target.name, event.target.value);
+
+        callback_hell();
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Callback Hell</h1>
+  <div>
+    <a class="menu" href="/study_promise">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+  <button class="btn" id="btnStart" name="btnStart" value="func">Start</button>
+</body>
+
+
+</html>
