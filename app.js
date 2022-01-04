@@ -16,6 +16,7 @@ var study_redux = require("./routes/study_redux");
 var study_npm = require("./routes/study_npm");
 var study_webpack = require("./routes/study_webpack");
 var study_promise = require("./routes/study_promise");
+var study_dream_coding = require("./routes/study_dream_coding");
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use("/study_redux", study_redux);
 app.use("/study_npm", study_npm);
 app.use("/study_webpack", study_webpack);
 app.use("/study_promise", study_promise);
+app.use("/study_dream_coding", study_dream_coding);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

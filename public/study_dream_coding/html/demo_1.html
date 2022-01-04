@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_1</title>
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
+
+  <!-- <script src="../js/script1.js"></script>
+  <script src="../js/script2.js"></script>
+  <script src="../js/script3.js"></script> -->
+
+  <!-- <script src="../js/script1.js" async></script>
+  <script src="../js/script2.js" async></script>
+  <script src="../js/script3.js" async></script> -->
+
+  <script src="../js/script1.js" defer></script>
+  <script src="../js/script2.js" defer></script>
+  <script src="../js/script3.js" defer></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+
+      console.log("page 4", sum(10));
+    });
+
+    window.addEventListener("load", function (event) {
+      console.log("All resources finished loading!");
+
+      console.log("page 5", sum(1));
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">sync / async / defer</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr>
+</body>
+
+</html>
