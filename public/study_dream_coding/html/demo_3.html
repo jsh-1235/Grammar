@@ -7,17 +7,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>demo_3</title>
   <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100px;
+    }
+
+    .btn {
+      width: 100%;
+      height: 100%;
+      margin: 0px 1px 0px 1px;
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      font-size: 1rem;
+    }
+  </style>
   <script>
+    function func1() {
+      console.log("log");
+      console.info("info");
+      console.warn("warn");
+      console.error("error");
+    }
+
+    function func2() {
+      console.assert(2 === 2, "same!");
+      console.assert(2 === 3, "not same!");
+    }
+
+    function func3() {
+      const dog = {
+        type: 'dog',
+        name: "happy",
+        owner: {
+          name: "jsh"
+        }
+      }
+
+      console.log(dog);
+      console.table(dog);
+      console.dir(dog, { colors: false, depth: 0 });
+    }
+
+    function func4() {
+      console.time("for loop");
+
+      let result = 0;
+
+      for (let index = 0; index < 10; index++) {
+        result += index;
+      }
+
+      console.timeEnd("for loop");
+    }
+
+    function func5() {
+      function test() {
+        console.count("hi");
+      }
+
+      test();
+      test();
+      test();
+      console.countReset("hi");
+      test();
+      test();
+    }
+
+    function func6() {
+      function f1() {
+        f2();
+      }
+
+      function f2() {
+        f3();
+      }
+
+      function f3() {
+        console.trace();
+        console.log("hi!");
+      }
+
+      f1();
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+    });
+
+    window.addEventListener("load", function (event) {
+    });
   </script>
 </head>
 
 <body>
-  <h1 class="title">Object</h1>
+  <h1 class="title">Console</h1>
   <div>
     <a class="menu" href="/study_dream_coding">Back</a>
     <a class="menu" href="/">Home</a>
   </div>
   <hr />
+  <div class="container">
+    <button class="btn" onclick="func1()">Log Level</button>
+    <button class="btn" onclick="func2()">Assert</button>
+    <button class="btn" onclick="func3()">Print Object</button>
+    <button class="btn" onclick="func4()">measuring time</button>
+    <button class="btn" onclick="func5()">counting</button>
+    <button class="btn" onclick="func6()">trace</button>
+  </div>
 </body>
 
 </html>
