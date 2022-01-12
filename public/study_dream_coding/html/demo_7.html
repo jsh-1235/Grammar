@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_7</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: none;
+      justify-content: space-between;
+      height: 50vh;
+    }
+
+    /* CSS */
+    .button-1 {
+      background-color: yellowgreen;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      /* height: 40px; */
+      /* line-height: 20px; */
+      list-style: none;
+      margin: 5px;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+      background-color: #F082AC;
+    }
+
+    .btn {
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* flex-grow: 1; */
+      /* margin: 5px; */
+      /* padding: 10px; */
+      /* font-size: 2rem; */
+    }
+  </style>
+  <script>
+    'use strict'
+
+    // Object-oriented programming
+    // class : template
+    // object: instance of a class
+    // javascript classes
+    // introduced in ES6
+    // syntactical sugar over prototype-based inheritance
+
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      speak() {
+        console.log(`${this.name}: hello!`);
+      }
+    }
+
+    function func1() {
+      const jsh = new Person("jsh", 40);
+      jsh.speak();
+    }
+
+    class User {
+      constructor(firstname, lastname, age) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+      }
+
+      show() {
+        console.log(`${this.firstname} ${this.lastname} ${this.age}`)
+      }
+
+      get age() {
+        return this._age;
+      }
+
+      set age(value) {
+        // if (value < 0) {
+        //   throw Error("age can not be negative");
+        // }
+
+        // this._age = value;
+
+        this._age = value < 0 ? 0 : value;
+      }
+    }
+    function func2() {
+      const user = new User('Steve', 'Job', -1);
+      user.show();
+    }
+
+    class Experiment {
+      publicField = 2;
+      #privateField = 3;    // 클래스 내부에서만 사용 가능
+    }
+
+    function func3() {
+      const experiment = new Experiment();
+      console.log(experiment.publicField, experiment.privateField);
+    }
+
+    class Article {
+      static publisher = "Dream Coding";
+
+      constructor(number) {
+        this.number = number;
+      }
+
+      show() {
+        console.log(`${Article.publisher} ${this.number}`);
+      }
+
+      static printPublisher() {
+        // console.log(`${Article.publisher} ${this.number}`);
+        console.log(`${Article.publisher}`);
+      }
+    }
+    function func4() {
+      const article1 = new Article(1);
+      const article2 = new Article(2);
+
+      article1.show();
+      article2.show();
+      Article.publisher = "BT";
+      Article.printPublisher();
+    }
+
+    class Shape {
+      constructor(width, height, color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+      }
+
+      draw() {
+        console.log(`drawing ${this.color}`);
+      }
+
+      getArea() {
+        return this.width * this.height;
+      }
+    }
+
+    class Rectangle extends Shape {
+      draw() {
+        super.draw();
+        console.log("🗳️");
+      }
+    };
+    class Triangle extends Shape {
+      getArea() {
+        return super.getArea() / 2;
+      }
+    };
+
+    const rectangle = new Rectangle(10, 10, "red");
+    const triangle = new Triangle(10, 10, "blue");
+
+    function func5() {
+      rectangle.draw();
+      triangle.draw();
+      console.log(`Rectangle ${rectangle.getArea()}`);
+      console.log(`Rectangle ${triangle.getArea()}`);
+    }
+
+    function func6() {
+      console.log(rectangle instanceof Rectangle)
+      console.log(rectangle instanceof Shape)
+      console.log(triangle instanceof Triangle)
+      console.log(triangle instanceof Rectangle)
+      console.log(triangle instanceof Object)
+    }
+
+    function calculate(num1, num2, callback) {
+      return callback(num1, num2);
+    }
+
+    const add = (a, b) => a + b;
+    const subtract = (a, b) => a - b;
+    const multiply = (a, b) => a * b;
+    const divide = (a, b) => a / b;
+
+    function func7() {
+      console.log(calculate(20, 10, add));
+      console.log(calculate(20, 10, subtract));
+      console.log(calculate(20, 10, multiply));
+      console.log(calculate(20, 10, divide));
+    }
+
+    function func8() {
+
+    }
+
+    function func9() {
+
+    }
+
+    function func10() {
+
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+    });
+
+    window.addEventListener("load", function (event) {
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Class</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <button class="btn button-1" role="button" onclick="func1()">Class</button>
+    <button class="btn button-1" role="button" onclick="func2()">getter/setter</button>
+    <button class="btn button-1" role="button" onclick="func3()">Fields (public, private)</button>
+    <button class="btn button-1" role="button" onclick="func4()">Static properties and methods (Too soon!)</button>
+    <button class="btn button-1" role="button" onclick="func5()">Inheritance</button>
+    <button class="btn button-1" role="button" onclick="func6()">instanceof</button>
+    <button class="btn button-1" role="button" onclick="func7()">Calculator</button>
+  </div>
+</body>
+
+</html>

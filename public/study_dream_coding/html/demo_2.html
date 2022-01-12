@@ -6,157 +6,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>demo_2</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
-  <style>
-    dt {
-      font-weight: bold;
-    }
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
 
-    /* dl,
-    dd {
-      font-size: 1rem;
-    } */
+  <!-- <script src="../js/script1.js"></script>
+  <script src="../js/script2.js"></script>
+  <script src="../js/script3.js"></script> -->
 
-    dt::after {
-      content: ": ";
-    }
-  </style>
+  <!-- <script src="../js/script1.js" async></script>
+  <script src="../js/script2.js" async></script>
+  <script src="../js/script3.js" async></script> -->
+
+  <script src="../js/script1.js" defer></script>
+  <script src="../js/script2.js" defer></script>
+  <script src="../js/script3.js" defer></script>
+
   <script>
-    'use strict'
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
 
-    function func1() {
-      const radius = 10;
-      const pi = 3.14;
+      console.log("page 4", sum(10));
+    });
 
-      console.log(`value : ${radius}, type: ${typeof radius}`);     // backtick, quote
-      console.log(`value : ${pi}, type: ${typeof pi}`);
+    window.addEventListener("load", function (event) {
+      console.log("All resources finished loading!");
 
-      // number - special number values : Infinity, -Infinity, NaN (Not a Number)
-      const infinity = 1 / 0;
-      const negativeInfinity = -1 / 0;
-      const nAn = 'not a number' / 2;
-
-      console.log(`value : ${infinity}, type: ${typeof infinity}`);
-      console.log(`value : ${negativeInfinity}, type: ${typeof negativeInfinity}`);
-      console.log(`value : ${nAn}, type: ${typeof nAn}`);
-
-      // bigInt (fairly new, don't use it yet)
-      const bigInt = 123456789123456789123456789123456789123456789123456789n; // over (2^53 - 1)
-      console.log(`value : ${bigInt}, type: ${typeof bigInt}`);
-      console.log(Number.MAX_SAFE_INTEGER, 2 ** 53 - 1);
-    }
-
-    function func2() {
-      const char = 'c';
-      const brendan = 'brendan';
-      const greeting = "hello " + brendan;
-
-      console.log("value : " + greeting + ", type: " + typeof greeting);
-      console.log(`value : ${greeting}, type: ${typeof greeting}`); // Template Literal
-
-      for (let element in brendan) {
-        console.log(element, brendan[element], brendan.charAt(element));
-      }
-    }
-
-    function func3() {
-      const canRead = true;
-      const test = 3 < 1;
-
-      console.log(`value : ${canRead}, type: ${typeof canRead}`);
-      console.log(`value : ${test}, type: ${typeof test}`);
-    }
-
-    function func4() {
-      let nothing = null;
-
-      console.log(`value : ${nothing}, type: ${typeof nothing}`);
-    }
-
-    function func5() {
-      let x;
-
-      console.log(`value : ${x}, type: ${typeof x}`);
-    }
-
-    function func6() {
-      // symbol, create unique identifiers for objects;
-
-      const symbol1 = Symbol('id');
-      const symbol2 = Symbol('id');
-      console.log(symbol1 === symbol2, symbol1.description, symbol2.description, typeof symbol1);
-
-      const gSymbol1 = Symbol.for('id');
-      const gSymbol2 = Symbol.for('id');
-      console.log(gSymbol1 === gSymbol2, gSymbol1.description, gSymbol2.description, typeof gSymbol1);
-    }
-
-    function func7() {
-      console.log("var hoisting :", nickname);
-
-      {
-        let name = "jeong seung hun";
-        var nickname = "jsh";
-
-        console.log("Block Scope :", nickname, name);
-      }
-
-      console.log("var hoisting :", nickname, name);
-    }
+      console.log("page 5", sum(1));
+    });
   </script>
 </head>
 
 <body>
-  <h1 class="title">Variable</h1>
+  <h1 class="title">sync / async / defer</h1>
   <div>
     <a class="menu" href="/study_dream_coding">Back</a>
     <a class="menu" href="/">Home</a>
   </div>
-  <hr />
-  <button onclick="func1()">Number</button>
-  <button onclick="func2()">String</button>
-  <button onclick="func3()">Boolean</button>
-  <button onclick="func4()">null</button>
-  <button onclick="func5()">undefined</button>
-  <button onclick="func6()">Symbol</button>
-  <button onclick="func7()">Block Scope</button>
   <hr>
-  <dl>
-    <dt>Use strict</dt>
-    <dd>added in ES 5</dd>
-    <dd>use this for Valina Javascript.</dd>
-  </dl>
-
-  <dl>
-    <dt>Variable</dt>
-    <dd>let (added in ES6)</dd>
-  </dl>
-
-  <dl>
-    <dt>Constants</dt>
-    <dd>favor immutable data type always for a few reasons</dd>
-    <dd>security</dd>
-    <dd>thread safety</dd>
-    <dd>reduce human mistakes</dd>
-  </dl>
-
-  <dl>
-    <dt>var 변수 선언자</dt>
-    <dd>var (don't ever use this!)</dd>
-    <dd>var hoisting</dd>
-    <dd>has no block scope</dd>
-  </dl>
-
-  <dl>
-    <dt>Variable Type</dt>
-    <dd>primitive (single item) : number, string, boolean, null, undefined, Symbol</dd>
-    <dd>object (box container)</dd>
-    <dd>function (first-class function)</dd>
-  </dl>
-  <dl>
-    <dt>Dynamic typing</dt>
-    <dd>dynamically typed language</dd>
-  </dl>
+  <div>
+    <ul class="item-list">
+      <li>Material Theme</li>
+      <li>Material Theme Icon</li>
+      <li>Prettier (Format on Save)</li>
+      <li>Bracket Pair Colorizer</li>
+      <li>Indent-Rainbow</li>
+      <li>Auto Rename Tag</li>
+      <li>CSS Peek</li>
+      <li>HTML CSS Support</li>
+      <li>Live Server</li>
+      <li>Markdown Preview</li>
+    </ul>
+  </div>
 </body>
 
 </html>

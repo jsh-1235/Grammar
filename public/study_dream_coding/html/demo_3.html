@@ -8,115 +8,155 @@
   <title>demo_3</title>
   <link rel="stylesheet" text="text/css" href="../css/style.css">
   <style>
-    .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      height: 100px;
+    dt {
+      font-weight: bold;
     }
 
-    .btn {
-      width: 100%;
-      height: 100%;
-      margin: 0px 1px 0px 1px;
-      /* box-sizing: border-box; */
-      /* box-sizing: content-box; */
+    /* dl,
+    dd {
       font-size: 1rem;
+    } */
+
+    dt::after {
+      content: ": ";
     }
   </style>
   <script>
+    'use strict'
+
     function func1() {
-      console.log("log");
-      console.info("info");
-      console.warn("warn");
-      console.error("error");
+      const radius = 10;
+      const pi = 3.14;
+
+      console.log(`value : ${radius}, type: ${typeof radius}`);     // backtick, quote
+      console.log(`value : ${pi}, type: ${typeof pi}`);
+
+      // number - special number values : Infinity, -Infinity, NaN (Not a Number)
+      const infinity = 1 / 0;
+      const negativeInfinity = -1 / 0;
+      const nAn = 'not a number' / 2;
+
+      console.log(`value : ${infinity}, type: ${typeof infinity}`);
+      console.log(`value : ${negativeInfinity}, type: ${typeof negativeInfinity}`);
+      console.log(`value : ${nAn}, type: ${typeof nAn}`);
+
+      // bigInt (fairly new, don't use it yet)
+      const bigInt = 123456789123456789123456789123456789123456789123456789n; // over (2^53 - 1)
+      console.log(`value : ${bigInt}, type: ${typeof bigInt}`);
+      console.log(Number.MAX_SAFE_INTEGER, 2 ** 53 - 1);
     }
 
     function func2() {
-      console.assert(2 === 2, "same!");
-      console.assert(2 === 3, "not same!");
+      const char = 'c';
+      const brendan = 'brendan';
+      const greeting = "hello " + brendan;
+
+      console.log("value : " + greeting + ", type: " + typeof greeting);
+      console.log(`value : ${greeting}, type: ${typeof greeting}`); // Template Literal
+
+      for (let element in brendan) {
+        console.log(element, brendan[element], brendan.charAt(element));
+      }
     }
 
     function func3() {
-      const dog = {
-        type: 'dog',
-        name: "happy",
-        owner: {
-          name: "jsh"
-        }
-      }
+      const canRead = true;
+      const test = 3 < 1;
 
-      console.log(dog);
-      console.table(dog);
-      console.dir(dog, { colors: false, depth: 0 });
+      console.log(`value : ${canRead}, type: ${typeof canRead}`);
+      console.log(`value : ${test}, type: ${typeof test}`);
     }
 
     function func4() {
-      console.time("for loop");
+      let nothing = null;
 
-      let result = 0;
-
-      for (let index = 0; index < 10; index++) {
-        result += index;
-      }
-
-      console.timeEnd("for loop");
+      console.log(`value : ${nothing}, type: ${typeof nothing}`);
     }
 
     function func5() {
-      function test() {
-        console.count("hi");
-      }
+      let x;
 
-      test();
-      test();
-      test();
-      console.countReset("hi");
-      test();
-      test();
+      console.log(`value : ${x}, type: ${typeof x}`);
     }
 
     function func6() {
-      function f1() {
-        f2();
-      }
+      // symbol, create unique identifiers for objects;
 
-      function f2() {
-        f3();
-      }
+      const symbol1 = Symbol('id');
+      const symbol2 = Symbol('id');
+      console.log(symbol1 === symbol2, symbol1.description, symbol2.description, typeof symbol1);
 
-      function f3() {
-        console.trace();
-        console.log("hi!");
-      }
-
-      f1();
+      const gSymbol1 = Symbol.for('id');
+      const gSymbol2 = Symbol.for('id');
+      console.log(gSymbol1 === gSymbol2, gSymbol1.description, gSymbol2.description, typeof gSymbol1);
     }
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
-    });
+    function func7() {
+      console.log("var hoisting :", nickname);
 
-    window.addEventListener("load", function (event) {
-    });
+      {
+        var nickname = "jsh";
+        let name = "jeong seung hun";
+
+        console.log("Block Scope :", nickname, name);
+      }
+
+      console.log("var hoisting :", nickname, name);
+    }
   </script>
 </head>
 
 <body>
-  <h1 class="title">Console</h1>
+  <h1 class="title">Variable</h1>
   <div>
     <a class="menu" href="/study_dream_coding">Back</a>
     <a class="menu" href="/">Home</a>
   </div>
   <hr />
-  <div class="container">
-    <button class="btn" onclick="func1()">Log Level</button>
-    <button class="btn" onclick="func2()">Assert</button>
-    <button class="btn" onclick="func3()">Print Object</button>
-    <button class="btn" onclick="func4()">measuring time</button>
-    <button class="btn" onclick="func5()">counting</button>
-    <button class="btn" onclick="func6()">trace</button>
-  </div>
+  <button onclick="func1()">Number</button>
+  <button onclick="func2()">String</button>
+  <button onclick="func3()">Boolean</button>
+  <button onclick="func4()">null</button>
+  <button onclick="func5()">undefined</button>
+  <button onclick="func6()">Symbol</button>
+  <button onclick="func7()">Block Scope</button>
+  <hr>
+  <dl>
+    <dt>Use strict</dt>
+    <dd>added in ES 5</dd>
+    <dd>use this for Valina Javascript.</dd>
+  </dl>
+
+  <dl>
+    <dt>Variable</dt>
+    <dd>let (added in ES6)</dd>
+  </dl>
+
+  <dl>
+    <dt>Constants</dt>
+    <dd>favor immutable data type always for a few reasons</dd>
+    <dd>security</dd>
+    <dd>thread safety</dd>
+    <dd>reduce human mistakes</dd>
+  </dl>
+
+  <dl>
+    <dt>var 변수 선언자</dt>
+    <dd>var (don't ever use this!)</dd>
+    <dd>var hoisting</dd>
+    <dd>has no block scope</dd>
+  </dl>
+
+  <dl>
+    <dt>Variable Type</dt>
+    <dd>primitive (single item) : number, string, boolean, null, undefined, Symbol</dd>
+    <dd>object (box container)</dd>
+    <dd>function (first-class function)</dd>
+  </dl>
+  <dl>
+    <dt>Dynamic typing</dt>
+    <dd>dynamically typed language</dd>
+  </dl>
 </body>
 
 </html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_8</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: none;
+      justify-content: space-between;
+      height: 50vh;
+    }
+
+    /* CSS */
+    .button-1 {
+      background-color: yellowgreen;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      /* height: 40px; */
+      /* line-height: 20px; */
+      list-style: none;
+      margin: 5px;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+      background-color: #F082AC;
+    }
+
+    .btn {
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* flex-grow: 1; */
+      /* margin: 5px; */
+      /* padding: 10px; */
+      /* font-size: 2rem; */
+    }
+  </style>
+  <script>
+    'use strict'
+
+    function func1() {
+      const arr1 = new Array();
+      arr1.push(1);
+      arr1.push(2);
+      arr1.push(3);
+      arr1.push(4);
+      arr1.push(5);
+
+      console.log(arr1[0], arr1[arr1.length - 1]);
+
+      const arr2 = [1, 2, 3, 4, 5];
+
+      for (let i = 0; i < arr2.length; i++) {
+        console.log(arr2[i]);
+      }
+    }
+
+    function func2() {
+      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+
+      console.clear();
+
+      for (const key in fruits) {
+        console.log(`${key} ${fruits[key]}`);
+      }
+    }
+
+    function func3() {
+      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+
+      console.clear();
+
+      for (const value of fruits) {
+        console.log(`${value}`);
+      }
+    }
+
+    function func4() {
+      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+
+      console.clear();
+
+      fruits.forEach((item, indx, arr) => {
+        console.log(`${item} ${indx} ${arr}`);
+      });
+    }
+
+    function func5() {
+      console.clear();
+
+      const fruits = ['🍎', '🥝'];
+
+      console.log(fruits);
+
+      fruits.push('🍓');
+      fruits.push('🍑');
+
+      console.log(fruits);
+
+      fruits.pop();
+      fruits.pop();
+      fruits.pop();
+
+      console.log(fruits);
+    }
+
+    function func6() {
+      console.clear();
+
+      const fruits = ['🍎', '🥝'];
+
+      console.log(fruits);
+
+      fruits.unshift('🍓');
+      fruits.unshift('🍑');
+
+      console.log(fruits);
+
+      fruits.shift();
+      fruits.shift();
+      fruits.shift();
+
+      console.log(fruits);
+    }
+
+    function func7() {
+      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+
+      console.clear();
+
+      console.log(fruits);
+
+      // fruits.splice(0);
+      // fruits.splice(2);
+      // fruits.splice(0, 2);
+      fruits.splice(0, 2, '🍉', '🍋');
+
+      console.log(fruits);
+    }
+
+    function func8() {
+      const fruits1 = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+      const fruits2 = ['🍉', '🍋'];
+
+      console.clear();
+
+      console.log(fruits1);
+      console.log(fruits2);
+
+      const newFruits = fruits1.concat(fruits2, '😀');
+      console.log(newFruits);
+    }
+
+    function func9() {
+      const fruits = ['🍎', '🥝', '🍓', '🍑', '🥝', '🍈'];
+
+      console.clear();
+
+      console.log(fruits);
+
+      console.log(fruits.indexOf('🥝'), fruits.indexOf('😀'));
+      console.log(fruits.lastIndexOf('🥝'), fruits.indexOf('😀'));
+      console.log(fruits.includes('🥝'), fruits.includes('😀'));
+    }
+
+    function func10() {
+      console.clear();
+
+      const fruits = ["apple", "banana", "orange"];
+
+      const result = fruits.join(",");
+
+      console.log(result);
+    }
+
+    function func11() {
+      console.clear();
+
+      const fruits = "🍎,🥝,🍓,🍑,🥝,🍈";
+
+      console.log(fruits)
+
+      const result = fruits.split(",");
+
+      console.log(result);
+    }
+
+    function func12() {
+      console.clear();
+
+      const array = [1, 2, 3, 4, 5];
+
+      console.log(array)
+
+      const result = array.reverse();
+
+      console.log(result);
+      console.log(array)
+    }
+
+    function func13() {
+      console.clear();
+
+      const array = [1, 2, 3, 4, 5];
+
+      // console.log(array)
+
+      const result = array.slice(2, 4);
+
+      console.log(result);
+      console.log(array)
+    }
+
+    class Student {
+      constructor(name, age, enrolled, score) {
+        this.name = name;
+        this.age = age;
+        this.enrolled = enrolled;
+        this.score = score;
+      }
+    }
+
+    const students = [
+      new Student('A', 29, true, 45),
+      new Student('B', 28, false, 80),
+      new Student('C', 30, true, 90),
+      new Student('D', 40, false, 66),
+      new Student('E', 18, true, 88)];
+
+    function func14() {
+      const result = students.find((student, index) => {
+        return student.score === 90;
+      });
+
+      console.log(result);
+    }
+
+    function func15() {
+      const result = students.filter((student, index) => {
+        return student.enrolled === true;
+      });
+
+      console.log(result);
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+    });
+
+    window.addEventListener("load", function (event) {
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Array</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <button class="btn button-1" role="button" onclick="func1()">Declaration</button>
+    <button class="btn button-1" role="button" onclick="func2()">for in</button>
+    <button class="btn button-1" role="button" onclick="func3()">for of</button>
+    <button class="btn button-1" role="button" onclick="func4()">forEach</button>
+    <button class="btn button-1" role="button" onclick="func5()">push/pop</button>
+    <button class="btn button-1" role="button" onclick="func6()">unshift/shift</button>
+    <button class="btn button-1" role="button" onclick="func7()">splice</button>
+    <button class="btn button-1" role="button" onclick="func8()">concat</button>
+    <button class="btn button-1" role="button" onclick="func9()">Searching</button>
+    <button class="btn button-1" role="button" onclick="func10()">make a string out of an array</button>
+    <button class="btn button-1" role="button" onclick="func11()">make an array out of string</button>
+    <button class="btn button-1" role="button" onclick="func12()">make an array look like this: [5, 4, 3, 2, 1]</button>
+    <button class="btn button-1" role="button" onclick="func13()">make new array without the first two elements</button>
+    <button class="btn button-1" role="button" onclick="func14()">find a student with the score 90</button>
+    <button class="btn button-1" role="button" onclick="func15()">make an array of enrolled students</button>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo_10</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: none;
+      justify-content: space-between;
+      height: 50vh;
+    }
+
+    /* CSS */
+    .button-1 {
+      background-color: yellowgreen;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      /* height: 40px; */
+      /* line-height: 20px; */
+      list-style: none;
+      margin: 5px;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+      background-color: #F082AC;
+    }
+
+    .btn {
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* flex-grow: 1; */
+      /* margin: 5px; */
+      /* padding: 10px; */
+      /* font-size: 2rem; */
+    }
+  </style>
+  <script>
+    function func1(price) {
+
+    }
+
+    function func2(message) {
+
+    }
+
+    function func3(message) {
+
+    }
+
+    function func4(message = 'Default Parameter 😂') {
+
+    }
+
+    function func5() {
+
+    }
+
+    function func6() {
+
+    }
+
+    function func7() {
+
+    }
+
+    function func8() {
+
+    }
+
+    function func9() {
+
+    }
+
+    function func10() {
+
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+    });
+
+    window.addEventListener("load", function (event) {
+    });
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Callback</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
+    <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
+    <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
+    <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
+    <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
+    <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
+    <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
+    <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
+    <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
+    <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
+  </div>
+</body>
+
+</html>
