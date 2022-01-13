@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_16</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: none;
+      justify-content: space-between;
+      /* height: 50vh; */
+    }
+
+    /* CSS */
+    .button-1 {
+      background-color: yellowgreen;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      /* height: 40px; */
+      /* line-height: 20px; */
+      list-style: none;
+      margin: 5px;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+      background-color: #f082ac;
+    }
+
+    .btn {
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* flex-grow: 1; */
+      /* margin: 5px; */
+      /* padding: 10px; */
+      /* font-size: 2rem; */
+    }
+  </style>
+  <script>
+    "use strict";
+
+    function create() {
+      localStorage.setItem('myCat', 'Tom');
+    }
+
+    function read() {
+      const cat = localStorage.getItem('myCat');
+      document.getElementById("result").innerHTML = `<p>${cat}</p>`;
+      console.log(cat);
+    }
+
+    function remove() {
+      localStorage.removeItem("myCat");
+    }
+
+    function clear() {
+      localStorage.clear();
+    }
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
+    });
+
+    window.addEventListener("load", function (event) {});
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Local Storage</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <button class="btn button-1" role="button" onclick="create()">Create</button>
+    <button class="btn button-1" role="button" onclick="read()">Read</button>
+    <button class="btn button-1" role="button" onclick="remove()">Remove</button>
+    <button class="btn button-1" role="button" onclick="clear()">Clear</button>
+  </div>
+  <hr />
+  <div id="result"></div>
+  <hr>
+  <div>
+    <ul>
+      <li>localStorage 읽기 전용 속성을 사용하면 Document 출처의 Storage 객체에 접근할 수 있습니다.</li>
+      <li>저장한 데이터는 브라우저 세션 간에 공유됩니다. </li>
+      <li>localStorage는 sessionStorage와 비슷하지만, localStorage의 데이터는 만료되지 않고 sessionStorage의 데이터는 페이지 세션이 끝날 때, 즉 페이지를 닫을 때
+        사라지는 점이 다릅니다. </li>
+      <li>사생활 보호 모드" 중 생성한 localStorage 데이터는 마지막 "사생활 보호" 탭이 닫힐 때 지워집니다.</li>
+      <li>localStorage에 저장한 자료는 페이지 프로토콜별로 구분합니다. 특히 HTTP(http://example.com)로 방문한 페이지에서 저장한 데이터는 같은 페이지의
+        HTTPS(https://example.com)와는 다른 localStorage에 저장됩니다.</li>
+      <li>키와 값은 항상 각 문자에 2바이트를 할당하는 UTF-16 DOMString의 형태로 저장합니다. 객체와 마찬가지로 정수 키는 자동으로 문자열로 변환합니다.</li>
+      <li>최대 10MB 만 저장이 가능하며, 오직 String 형태만 저장이 가능하다.</li>
+    </ul>
+  </div>
+</body>
+
+</html>

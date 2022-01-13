@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>demo_10</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <link href="../css/style.css" rel="stylesheet" text="text/css" />
   <style>
     .container {
       display: flex;
       flex-direction: column;
       flex-wrap: none;
       justify-content: space-between;
-      height: 50vh;
+      /* height: 50vh; */
     }
 
     /* CSS */
@@ -22,7 +22,7 @@
       border-radius: 8px;
       border-style: none;
       box-sizing: border-box;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
 
     .button-1:hover,
     .button-1:focus {
-      background-color: #F082AC;
+      background-color: #f082ac;
     }
 
     .btn {
@@ -61,52 +61,91 @@
     }
   </style>
   <script>
-    function func1(price) {
+    "use strict";
 
+    function func1() {
+      console.log(1);
+      console.log(2);
+      console.log(3);
     }
 
-    function func2(message) {
-
+    function func2() {
+      console.log(1);
+      setTimeout(() => console.log(2), 1000);
+      console.log(3);
     }
 
-    function func3(message) {
-
+    function func3() {
+      console.log(1);
+      printImmediately(() => console.log(2));
+      console.log(3);
+    }
+    // Synchronous  callback / function declaration hoisting
+    function printImmediately(print) {
+      print();
     }
 
-    function func4(message = 'Default Parameter 😂') {
+    function func4() {
+      console.log(1); // 동기
+      printWithDelay(() => console.log(2), 3000); // 비동기
+      console.log(3); // 동기
+    }
 
+    function printWithDelay(print, timeout) {
+      setTimeout(print, timeout);
+    }
+
+    class UserStorage {
+      loginUser(id, password, onSuccess, onError) {
+        setTimeout(() => {
+          if ((id === "ellie" && password === "dream") || (id === "code" && password === "academy")) {
+            onSuccess(id);
+          } else {
+            onError(new Error("not found"));
+          }
+        }, 2000);
+      }
+      getRoles(user, onSuccess, onError) {
+        setTimeout(() => {
+          if (user === "ellie") {
+            onSuccess({
+              name: "ellie",
+              role: "admin",
+            });
+          } else {
+            onError(new Error("no access"));
+          }
+        }, 1000);
+      }
     }
 
     function func5() {
-
+      const userStorage = new UserStorage();
+      const name = window.prompt("enter your id");
+      const password = window.prompt("enter your password");
+      userStorage.loginUser(
+        name,
+        password,
+        (user) => {
+          userStorage.getRoles(
+            user,
+            (userWithRole) => {
+              // console.log(userWithRole);
+              alert(`Hello ${userWithRole.name}, you have a ${userWithRole.role} role`);
+            },
+            (error) => console.log(error)
+          );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
 
-    function func6() {
-
-    }
-
-    function func7() {
-
-    }
-
-    function func8() {
-
-    }
-
-    function func9() {
-
-    }
-
-    function func10() {
-
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
     });
-
-    window.addEventListener("load", function (event) {
-    });
+    window.addEventListener("load", function (event) {});
   </script>
 </head>
 
@@ -118,16 +157,19 @@
   </div>
   <hr />
   <div class="container">
-    <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
-    <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
-    <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
-    <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
-    <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
-    <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
-    <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
-    <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
+    <button class="btn button-1" role="button" onclick="func1()">Synchronous Execute</button>
+    <button class="btn button-1" role="button" onclick="func2()">Asynchronous Execute</button>
+    <button class="btn button-1" role="button" onclick="func3()">Synchronous callback</button>
+    <button class="btn button-1" role="button" onclick="func4()">Asynchronous callback</button>
+    <button class="btn button-1" role="button" onclick="func5()">Callback Hell</button>
+  </div>
+  <hr />
+  <div>
+    <ul>
+      <li>Javascript is synchronous</li>
+      <li>Execute the code block by oder after hoisting</li>
+      <li>hoisting: var, function declaration</li>
+    </ul>
   </div>
 </body>
 

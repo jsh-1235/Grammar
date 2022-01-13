@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>demo_11</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <link href="../css/style.css" rel="stylesheet" text="text/css">
   <style>
     .container {
       display: flex;
       flex-direction: column;
       flex-wrap: none;
       justify-content: space-between;
-      height: 50vh;
+      /* height: 50vh; */
     }
 
     /* CSS */
@@ -22,7 +22,7 @@
       border-radius: 8px;
       border-style: none;
       box-sizing: border-box;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
 
     .button-1:hover,
     .button-1:focus {
-      background-color: #F082AC;
+      background-color: #f082ac;
     }
 
     .btn {
@@ -61,52 +61,140 @@
     }
   </style>
   <script>
-    function func1(price) {
+    "use strict";
 
+    function func1() {
+      // Producer
+      // when new Promise is created, the executor runs automatically
+      const promise = new Promise((resolve, reject) => {
+        // doing some heavy work
+        console.log("doing some heavy work");
+
+        setTimeout(() => {
+          resolve("ellie");
+          // reject(new Error('no network'));
+        }, 2000);
+      });
+
+      // Consumer: then, catch, finally
+      promise
+        .then((value) => {
+          console.log(value);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          console.log("finally");
+        });
     }
 
-    function func2(message) {
+    function func2() {
+      // Promise chaining
+      const fetchNumber = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(1), 1000);
+      });
 
+      fetchNumber
+        .then((number) => number * 2)
+        .then((number) => number * 3)
+        .then((number) => {
+          return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(number - 1), 1000);
+          });
+        })
+        .then((number) => console.log(number));
     }
 
-    function func3(message) {
+    const getHen = () =>
+      new Promise((resolve, reject) => {
+        setTimeout(() => resolve("🐔"), 1000);
+      });
 
+    const getEgg = (hen) =>
+      new Promise((resolve, reject) => {
+        console.log(hen)
+        // setTimeout(() => resolve(`${hen} => 🥚`), 1000);
+        setTimeout(() => reject(new Error(`error! ${hen} => 🥚`)), 1000);
+      });
+
+    const cook = (egg) =>
+      new Promise((resolve, reject) => {
+        console.log(egg)
+        setTimeout(() => resolve(`${egg} => 👨‍🍳`), 1000);
+      });
+
+    function func3() {
+      // getHen()
+      //   .then(hen => getEgg(hen))
+      //   .then(egg => cook(egg))
+      //   .then(meal => console.log(meal));
+
+      // getHen()
+      //   .then(getEgg)
+      //   .then(cook)
+      //   .then(console.log)
+      //   .catch(console.log);
+
+      getHen()
+        .then(getEgg)
+        .catch(error => {
+          return '🍞';
+        })
+        .then(cook)
+        .then(console.log);
     }
 
-    function func4(message = 'Default Parameter 😂') {
-
+    class UserStorage {
+      loginUser(id, password, onSuccess, onError) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if ((id === "ellie" && password === "dream") || (id === "code" && password === "academy")) {
+              resolve(id);
+            } else {
+              reject(new Error("not found"));
+            }
+          }, 2000);
+        });
+      }
+      getRoles(user, onSuccess, onError) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (user === "ellie") {
+              resolve({
+                name: "ellie",
+                role: "admin",
+              });
+            } else {
+              reject(new Error("no access"));
+            }
+          }, 1000);
+        });
+      }
     }
 
-    function func5() {
+    function func4() {
+      const userStorage = new UserStorage();
+      const name = window.prompt("enter your id");
+      const password = window.prompt("enter your password");
 
+      // userStorage.loginUser(name, password)
+      //   .then(user => userStorage.getRoles(user)
+      //     .then(userWithRole => {
+      //       alert(`Hello ${userWithRole.name}, you have a ${userWithRole.role} role`);
+      //     })
+      //     .catch(error => console.log(error)))
+      //   .catch(error => console.log(error));
+
+      userStorage.loginUser(name, password)
+        .then(userStorage.getRoles)
+        .then(user => alert(`Hello ${user.name}, you have a ${user.role} role`))
+        .catch(console.log);
     }
 
-    function func6() {
-
-    }
-
-    function func7() {
-
-    }
-
-    function func8() {
-
-    }
-
-    function func9() {
-
-    }
-
-    function func10() {
-
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
     });
 
-    window.addEventListener("load", function (event) {
-    });
+    window.addEventListener("load", function (event) {});
   </script>
 </head>
 
@@ -116,18 +204,20 @@
     <a class="menu" href="/study_dream_coding">Back</a>
     <a class="menu" href="/">Home</a>
   </div>
-  <hr />
+  <hr>
   <div class="container">
-    <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
-    <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
-    <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
-    <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
-    <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
-    <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
-    <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
-    <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
+    <button class="btn button-1" role="button" onclick="func1()">Producer / Consumer</button>
+    <button class="btn button-1" role="button" onclick="func2()">Promise chaining</button>
+    <button class="btn button-1" role="button" onclick="func3()">Error Handling</button>
+    <button class="btn button-1" role="button" onclick="func4()">Login</button>
+  </div>
+  <hr>
+  <div>
+    <ul>
+      <li>Promise is a JavaScript object for asynchronous operation</li>
+      <li>state: pending -> fulfilled or rejected</li>
+      <li>Producer vs Consumer</li>
+    </ul>
   </div>
 </body>
 

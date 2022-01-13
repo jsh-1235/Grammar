@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>demo_17</title>
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: none;
+      justify-content: space-between;
+      /* height: 50vh; */
+    }
+
+    /* CSS */
+    .button-1 {
+      background-color: yellowgreen;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      /* height: 40px; */
+      /* line-height: 20px; */
+      list-style: none;
+      margin: 5px;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+      background-color: #f082ac;
+    }
+
+    .btn {
+      /* box-sizing: border-box; */
+      /* box-sizing: content-box; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* flex-grow: 1; */
+      /* margin: 5px; */
+      /* padding: 10px; */
+      /* font-size: 2rem; */
+    }
+  </style>
+  <script>
+    "use strict";
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
+    });
+
+    const DB_NAME = "the_name";
+    const DB_VERSION = 1;
+    const DB_STORE_NAME = "company";
+
+    var db;
+
+    window.addEventListener("load", function (event) {
+      if (!window.indexedDB) {
+        window.alert(
+          "Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available."
+        );
+      }
+
+      // This is what our customer data looks like.
+      const customerData = [{
+          ssn: "1",
+          name: "Bill",
+          age: 35,
+          email: "bill@company.com",
+        },
+        {
+          ssn: "2",
+          name: "Donna",
+          age: 32,
+          email: "donna@home.org",
+        },
+      ];
+
+      var request = indexedDB.open(DB_NAME, 1);
+
+      request.onerror = function (event) {
+        // console.error("indexedDB : ", event.target.errorCode);
+      };
+
+      request.onsuccess = function (event) {
+        console.log(event.target.result);
+
+        db = event.target.result;
+      };
+
+      // 기존의 저장된 데이터베이스보다 큰 버전 번호의 데이터베이스가 로드 될 때 트리거된다.
+      request.onupgradeneeded = function (event) {
+        db = event.target.result;
+
+        // Create an objectStore to hold information about our customers. We're
+        // going to use "ssn" as our key path because it's guaranteed to be
+        // unique - or at least that's what I was told during the kickoff meeting.
+        var objectStore = db.createObjectStore("customers", {
+          keyPath: "ssn",
+        });
+
+        // Create an index to search customers by name. We may have duplicates
+        // so we can't use a unique index.
+        objectStore.createIndex("name", "name", {
+          unique: false,
+        });
+
+        // Create an index to search customers by email. We want to ensure that
+        // no two customers have the same email, so use a unique index.
+        objectStore.createIndex("email", "email", {
+          unique: true,
+        });
+
+        // Use transaction oncomplete to make sure the objectStore creation is
+        // finished before adding data into it.
+        objectStore.transaction.oncomplete = function (event) {
+          console.log("objectStore.transaction.oncomplete");
+
+          // Store values in the newly created objectStore.
+          var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
+
+          customerData.forEach(function (customer) {
+            customerObjectStore.add(customer);
+          });
+        };
+      };
+
+      // // Open the indexedDB.
+      // var request = indexedDB.open(DB_NAME, 2);
+
+      // request.onupgradeneeded = function (event) {
+
+      //   db = event.target.result;
+
+      //   // Create another object store called "names" with the autoIncrement flag set as true.
+      //   var objStore = db.createObjectStore("names", {
+      //     autoIncrement: true
+      //   });
+
+      //   // Because the "names" object store has the key generator, the key for the name value is generated automatically.
+      //   // The added records would be like:
+      //   // key : 1 => value : "Bill"
+      //   // key : 2 => value : "Donna"
+      //   customerData.forEach(function (customer) {
+      //     objStore.add(customer.name);
+      //   });
+      // };
+    });
+
+    function add() {
+      console.log(db);
+
+      var transaction = db.transaction(["customers"], "readwrite").objectStore("customers").add({
+        ssn: "3",
+        name: "jsh",
+        age: 40,
+        email: "jsh@home.org",
+      });
+
+      transaction.onsuccess = function (event) {
+        console.log("Successful!");
+      };
+    }
+
+    function read() {
+      console.log(db);
+
+      // var transaction = db.transaction(["customers"]);
+      // var objectStore = transaction.objectStore("customers");
+      // var request = objectStore.get("1");
+
+      // request.onsuccess = function (event) {
+      //   alert("Name for SSN 1 is " + request.result.name);
+      // };
+
+      var request = (db.transaction("customers").objectStore("customers").get("2").onsuccess = function (event) {
+        alert("Name for SSN 2 is " + event.target.result.name);
+      });
+
+      request.onerror = function (event) {
+        console.log("Do something with the error");
+      };
+    }
+
+    function add() {
+      console.log(db);
+
+      var request = db.transaction(["customers"], "readwrite").objectStore("customers").add({
+        ssn: "3",
+        name: "jsh",
+        age: 40,
+        email: "jsh@home.org",
+      });
+
+      request.onsuccess = function (event) {
+        console.log("Successful!");
+      };
+
+      request.onerror = function (event) {
+        console.log(request.error);
+
+        // alert("Database error: " + event.target.errorCode);
+      };
+    }
+
+    function update() {
+      console.log(db);
+
+      var objectStore = db.transaction(["customers"], "readwrite").objectStore("customers");
+      var request = objectStore.get("1");
+
+      request.onsuccess = function (event) {
+        // Get the old value that we want to update
+        var data = event.target.result;
+
+        // update the value(s) in the object that you want to change
+        data.name = "father";
+        data.age = 42;
+
+        // Put this updated object back into the database.
+        var requestUpdate = objectStore.put(data);
+
+        requestUpdate.onerror = function (event) {
+          console.log("update error");
+        };
+
+        requestUpdate.onsuccess = function (event) {
+          console.log("Successful!");
+        };
+      };
+    }
+
+    function remove() {
+      console.log(db);
+
+      var request = db.transaction(["customers"], "readwrite").objectStore("customers").delete("3");
+
+      request.onerror = function (event) {
+        console.log("remove error");
+      };
+
+      request.onsuccess = function (event) {
+        console.log("Successful!");
+      };
+    }
+
+    function clearAll() {
+      console.log(db);
+
+      var transaction = db.transaction(["customers"], "readwrite");
+      var objectStore = transaction.objectStore("customers");
+      var request = objectStore.clear();
+
+      request.onerror = function (event) {
+        console.log("remove error");
+      };
+
+      request.onsuccess = function (event) {
+        console.log("Successful!");
+      };
+    }
+
+    function drop() {
+      console.log("drop", db);
+
+      var request = window.indexedDB.deleteDatabase(DB_NAME);
+
+      console.log(request);
+      console.log(window.indexedDB.databases());
+
+      // request.onerror = function (event) {
+      //   console.log("drop error");
+      // };
+
+      // request.onsuccess = function (event) {
+      //   console.log("Database deleted successfully");
+
+      //   console.log(event.result); // should be undefined
+      // };
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">IndexedDB</h1>
+  <div>
+    <a class="menu" href="/study_dream_coding">Back</a>
+    <a class="menu" href="/">Home</a>
+  </div>
+  <hr />
+  <div class="container">
+    <button class="btn button-1" role="button" onclick="read()">read</button>
+    <button class="btn button-1" role="button" onclick="add()">add</button>
+    <button class="btn button-1" role="button" onclick="update()">update</button>
+    <button class="btn button-1" role="button" onclick="remove()">remove</button>
+    <button class="btn button-1" role="button" onclick="clearAll()">clear</button>
+    <button class="btn button-1" role="button" onclick="drop()">drop</button>
+  </div>
+  <hr />
+  <div id="result"></div>
+  <hr />
+  <div>
+    <ul>
+      <li>IndexedDB는 사용자의 브라우저에 데이터를 영구적으로 저장할 수 있는 방법 중 하나입니다.</li>
+      <li>IndexedDB를 사용하여 네트워크 상태에 상관없이 풍부한 쿼리 기능을 이용할 수 있는 웹 어플리케이션을 만들 수 있기 때문에, 여러분의 웹 어플리케이션은 온라인과 오프라인 환경에서 모두 동작할
+        수 있습니다.</li>
+      <li>데이터베이스를 엽니다.</li>
+      <li>객체 저장소(Object store)를 생성합니다.</li>
+      <li>트랜젝션(Transaction)을 시작하고, 데이터를 추가하거나 읽어들이는 등의 데이터베이스 작업을 요청합니다.</li>
+      <li>DOM 이벤트 리스너를 사용하여 요청이 완료될때까지 기다립니다.</li>
+      <li>(요청 객체에서 찾을 수 있는) 결과를 가지고 무언가를 합니다.</li>
+      <li>IndexedDB 는 javascript 가 이해하는 어떠한 값이라도 모두 저장할 수 있다</li>
+      <li>IndexedDB 는 용량 제한은 특별히 없으나, HDD 저장소 상태 나 브라우저의 상태에 따라서 달라 질 수 있다.</li>
+      <li>시크릿 모드에서 IndexedDB, Storage 를 사용하면, 값은 저장되지 않고 브라우저 종료시 사라진다.</li>
+      <li>IndexedDB 를 잘 활용하면 PWA 같은 SPA 페이지를 만들때 매우 도움이 될 것 같다.</li>
+    </ul>
+  </div>
+</body>
+
+</html>

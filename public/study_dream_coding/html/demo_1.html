@@ -1,300 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo_1</title>
+    <link rel="stylesheet" text="text/css" href="../css/style.css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+        justify-content: space-between;
+        height: 50vh;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>demo_1</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: none;
-      justify-content: space-between;
-      height: 50vh;
-    }
+      /* CSS */
+      .button-1 {
+        background-color: #ea4c89;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        /* height: 40px; */
+        /* line-height: 20px; */
+        list-style: none;
+        margin: 5px;
+        outline: none;
+        padding: 10px 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        vertical-align: baseline;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
 
-    /* CSS */
-    .button-1 {
-      background-color: #EA4C89;
-      border-radius: 8px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 2rem;
-      font-weight: 500;
-      /* height: 40px; */
-      /* line-height: 20px; */
-      list-style: none;
-      margin: 5px;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
+      .button-1:hover,
+      .button-1:focus {
+        background-color: #f082ac;
+      }
 
-    .button-1:hover,
-    .button-1:focus {
-      background-color: #F082AC;
-    }
+      .btn {
+        /* box-sizing: border-box; */
+        /* box-sizing: content-box; */
+        /* width: 100%; */
+        /* height: 100%; */
+        /* flex-grow: 1; */
+        /* margin: 5px; */
+        /* padding: 10px; */
+        /* font-size: 2rem; */
+      }
+    </style>
+    <script>
+      function func1(price) {
+        let result = price > 5 ? "🍎" : "🍗";
 
-    .btn {
-      /* box-sizing: border-box; */
-      /* box-sizing: content-box; */
-      /* width: 100%; */
-      /* height: 100%; */
-      /* flex-grow: 1; */
-      /* margin: 5px; */
-      /* padding: 10px; */
-      /* font-size: 2rem; */
-    }
-  </style>
-  <script>
-    function func1(price) {
-      let result = price > 5 ? '🍎' : '🍗';
-
-      console.log(result);
-    }
-
-    function func2(message) {
-      // Nullish coalescing operator ??   (무효 병합 연산자)
-      // leftExpr ?? rightExpr
-      // Null or undefined
-      const result = message ?? 'Nullish coalescing operator 😂';
-
-      console.log(result);
-    }
-
-    function func3(message) {
-      // Logical OR operator
-      // false or Null or undefined
-      // 0, '', ``
-      const result = message || 'Logical OR operator 😂';
-
-      console.log(result);
-    }
-
-    function func4(message = 'Default Parameter 😂') {
-      // Default Parameter
-      // undefined
-      console.log(message);
-    }
-
-    let person = {
-      name: "jsh",
-      age: 40,
-      height: 182
-    }
-
-    function func5() {
-      // Object destructuring
-      const { name, age, height } = person;
-
-      console.log(name, age, height);
-    }
-
-    function func6() {
-      const item = { type: 'car', name: 'sonata' };
-      const detail = { color: 'black', price: 100 };
-
-      const newObject = Object.assign(item, detail);
-
-      console.table(newObject);
-    }
-
-    function func7() {
-      // Spread Syntax Object
-      const item = { type: 'car', name: 'sonata' };
-      const detail = { color: 'black', price: 100 };
-
-      const newObject = { ...item, ...detail, price: 500 };
-
-      console.table(newObject);
-    }
-
-    function func8() {
-      let fruits = ['🍎', '🍊', '🍇'];
-      let animals = ['🐶', '🐱', '🦁'];
-
-      const combined = fruits.concat(animals);
-
-      console.table(combined);
-    }
-
-    function func9() {
-      // Spread Syntax Array
-      let fruits = ['🍎', '🍊', '🍇'];
-      let animals = ['🐶', '🐱', '🦁'];
-
-      const combined = [...fruits, '😍', ...animals, '😀'];
-
-      console.table(combined);
-    }
-
-    function displayJobTitle(person) {
-      const { name } = person;
-
-      // if (person.job?.title) {
-      //   console.log(name, person.job.title);
-      // }
-
-      const title = person.job?.title ?? "No Job Yet 🔥";
-
-      console.log(name, title);
-    }
-
-    function func10() {
-      // Optional Chaining
-      const bob = {
-        name: "bob",
-        age: 20,
-      };
-
-      const anna = {
-        name: "anna",
-        age: 30,
-        job: {
-          title: "Software Engineer"
-        }
-      };
-
-      displayJobTitle(bob);
-      displayJobTitle(anna);
-    }
-
-    function func11() {
-      const person = {
-        name: "anna",
-        age: 30,
-        job: {
-          title: "Software Engineer"
-        }
-      };
-
-      const { name, age, job } = person;
-
-      console.log(`${name} ${age} ${job.title}`);
-    }
-
-    function func12() {
-      // Looping
-      const items = [1, 2, 3, 4, 5, 6];
-
-      const result1 = items.filter((x) => x % 2 === 0);
-      const result2 = result1.map((x) => x * 4);
-      const result3 = result2.reduce((a, b) => a + b);
-
-      console.log(result1);
-      console.log(result2);
-      console.log(result3);
-
-      const result = items.filter((x) => x % 2 === 0).map((x) => x * 4).reduce((a, b) => a + b);
-      console.log("result", result);
-    }
-
-    function func13() {
-      // Remove Duplicate
-      let animals = ['🐶', '🐱', '🦁', '🐯', '🐶', '🐱'];
-
-      console.log(animals);
-
-      console.log([...new Set(animals)]);
-    }
-
-    //=====================================================
-
-    function syncSleep(ms) {
-      // 동기 지연
-
-      const wakeUpTime = Date.now() + ms;
-      while (Date.now() < wakeUpTime) { }
-    }
-
-    function asyncSleep(ms, callback) {
-      // 비동기 지연
-
-      setTimeout(() => callback(), ms);
-    }
-
-    async function hello() {
-      // return "hello";
-
-      syncSleep(1000);
-
-      asyncSleep(4000, function () {
-        console.log("The End")
-      });
-
-      return "hello";
-    }
-
-    let hi = async function () { syncSleep(2000); return "hi" };
-
-    let goodby = async () => { syncSleep(1000); return "goodby" };
-
-    function func14() {
-      // hello().then(console.log);
-
-      hello().then((result) => {
         console.log(result);
+      }
+
+      function func2(message) {
+        // Nullish coalescing operator ??   (무효 병합 연산자)
+        // leftExpr ?? rightExpr
+        // Null or undefined
+        const result = message ?? "Nullish coalescing operator 😂";
+
+        console.log(result);
+      }
+
+      function func3(message) {
+        // Logical OR operator
+        // false or Null or undefined
+        // 0, '', ``
+        const result = message || "Logical OR operator 😂";
+
+        console.log(result);
+      }
+
+      function func4(message = "Default Parameter 😂") {
+        // Default Parameter
+        // undefined
+        console.log(message);
+      }
+
+      let person = {
+        name: "jsh",
+        age: 40,
+        height: 182,
+      };
+
+      function func5() {
+        // Object destructuring
+        const { name, age, height } = person;
+
+        console.log(name, age, height);
+      }
+
+      function func6() {
+        const item = { type: "car", name: "sonata" };
+        const detail = { color: "black", price: 100 };
+
+        const newObject = Object.assign(item, detail);
+
+        console.table(newObject);
+      }
+
+      function func7() {
+        // Spread Syntax Object
+        const item = { type: "car", name: "sonata" };
+        const detail = { color: "black", price: 100 };
+
+        const newObject = { ...item, ...detail, price: 500 };
+
+        console.table(newObject);
+      }
+
+      function func8() {
+        let fruits = ["🍎", "🍊", "🍇"];
+        let animals = ["🐶", "🐱", "🦁"];
+
+        const combined = fruits.concat(animals);
+
+        console.table(combined);
+      }
+
+      function func9() {
+        // Spread Syntax Array
+        let fruits = ["🍎", "🍊", "🍇"];
+        let animals = ["🐶", "🐱", "🦁"];
+
+        const combined = [...fruits, "😍", ...animals, "😀"];
+
+        console.table(combined);
+      }
+
+      function displayJobTitle(person) {
+        const { name } = person;
+
+        // if (person.job?.title) {
+        //   console.log(name, person.job.title);
+        // }
+
+        const title = person.job?.title ?? "No Job Yet 🔥";
+
+        console.log(name, title);
+      }
+
+      function func10() {
+        // Optional Chaining
+        const bob = {
+          name: "bob",
+          age: 20,
+        };
+
+        const anna = {
+          name: "anna",
+          age: 30,
+          job: {
+            title: "Software Engineer",
+          },
+        };
+
+        displayJobTitle(bob);
+        displayJobTitle(anna);
+      }
+
+      function func11() {
+        const person = {
+          name: "anna",
+          age: 30,
+          job: {
+            title: "Software Engineer",
+          },
+        };
+
+        const { name, age, job } = person;
+
+        console.log(`${name} ${age} ${job.title}`);
+      }
+
+      function func12() {
+        // Looping
+        const items = [1, 2, 3, 4, 5, 6];
+
+        const result1 = items.filter((x) => x % 2 === 0);
+        const result2 = result1.map((x) => x * 4);
+        const result3 = result2.reduce((a, b) => a + b);
+
+        console.log(result1);
+        console.log(result2);
+        console.log(result3);
+
+        const result = items
+          .filter((x) => x % 2 === 0)
+          .map((x) => x * 4)
+          .reduce((a, b) => a + b);
+        console.log("result", result);
+      }
+
+      function func13() {
+        // Remove Duplicate
+        let animals = ["🐶", "🐱", "🦁", "🐯", "🐶", "🐱"];
+
+        console.log(animals);
+
+        console.log([...new Set(animals)]);
+      }
+
+      //=====================================================
+
+      function syncSleep(ms) {
+        // 동기 지연
+
+        const wakeUpTime = Date.now() + ms;
+        while (Date.now() < wakeUpTime) {}
+      }
+
+      function asyncSleep(ms, callback) {
+        // 비동기 지연
+
+        setTimeout(() => callback(), ms);
+      }
+
+      async function hello() {
+        // return "hello";
+
+        syncSleep(1000);
+
+        asyncSleep(4000, function () {
+          console.log("The End");
+        });
+
+        return "hello";
+      }
+
+      let hi = async function () {
+        syncSleep(2000);
+        return "hi";
+      };
+
+      let goodby = async () => {
+        syncSleep(1000);
+        return "goodby";
+      };
+
+      function func14() {
+        // hello().then(console.log);
+
+        hello().then((result) => {
+          console.log(result);
+        });
+      }
+
+      async function func15() {
+        const result1 = await hello();
+        console.log(result1);
+
+        const result2 = await hi();
+        console.log(result2);
+
+        const result3 = await goodby();
+        console.log(result3);
+      }
+
+      window.addEventListener("DOMContentLoaded", (event) => {
+        console.log("DOM fully loaded and parsed");
       });
-    }
 
-    async function func15() {
-      const result1 = await hello();
-      console.log(result1);
+      window.addEventListener("load", function (event) {});
+    </script>
+  </head>
 
-      const result2 = await hi();
-      console.log(result2);
-
-      const result3 = await goodby();
-      console.log(result3);
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
-    });
-
-    window.addEventListener("load", function (event) {
-    });
-  </script>
-</head>
-
-<body>
-  <h1 class="title">New Syntax</h1>
-  <div>
-    <a class="menu" href="/study_dream_coding">Back</a>
-    <a class="menu" href="/">Home</a>
-  </div>
-  <hr />
-  <div class="container">
-    <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
-    <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
-    <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
-    <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
-    <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
-    <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
-    <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
-    <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
-    <button class="btn button-1" role="button" onclick="func11()">Template Literals</button>
-    <button class="btn button-1" role="button" onclick="func12()">Looping</button>
-    <button class="btn button-1" role="button" onclick="func13()">Remove Duplicate</button>
-    <button class="btn button-1" role="button" onclick="func14()">Promise</button>
-    <button class="btn button-1" role="button" onclick="func15()">Promise -> Async/await</button>
-  </div>
-</body>
-
+  <body>
+    <h1 class="title">New Syntax</h1>
+    <div>
+      <a class="menu" href="/study_dream_coding">Back</a>
+      <a class="menu" href="/">Home</a>
+    </div>
+    <hr />
+    <div class="container">
+      <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
+      <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
+      <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
+      <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
+      <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
+      <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
+      <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
+      <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
+      <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
+      <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
+      <button class="btn button-1" role="button" onclick="func11()">Template Literals</button>
+      <button class="btn button-1" role="button" onclick="func12()">Looping</button>
+      <button class="btn button-1" role="button" onclick="func13()">Remove Duplicate</button>
+      <button class="btn button-1" role="button" onclick="func14()">Promise</button>
+      <button class="btn button-1" role="button" onclick="func15()">Promise -> Async/await</button>
+    </div>
+  </body>
 </html>

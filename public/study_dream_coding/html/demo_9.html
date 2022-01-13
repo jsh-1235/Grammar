@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>demo_9</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
   <style>
     .container {
       display: flex;
       flex-direction: column;
       flex-wrap: none;
       justify-content: space-between;
-      height: 50vh;
+      /* height: 50vh; */
     }
 
     /* CSS */
@@ -22,7 +22,7 @@
       border-radius: 8px;
       border-style: none;
       box-sizing: border-box;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
 
     .button-1:hover,
     .button-1:focus {
-      background-color: #F082AC;
+      background-color: #f082ac;
     }
 
     .btn {
@@ -61,52 +61,98 @@
     }
   </style>
   <script>
-    function func1(price) {
+    "use strict";
 
+    // HTTP : Hypertext Transfer Protocol
+    // AJAX : Asynchronous JavasScript XML
+    // XHR : XMLHttpRequest
+    // fetch() API
+    // Cross Browsing
+    // XML : eXtensible Markup Language
+
+    const rabbit = {
+      name: "tory",
+      color: "white",
+      size: null,
+      birthDate: new Date(),
+      symbol: Symbol("id"),
+      jump: () => {
+        console.log(`${this.name} can jump!`);
+      },
+    };
+
+    function func1() {
+      // Object to JSON
+
+      console.clear();
+
+      // let json = JSON.stringify(true);
+      // console.log(json);
+
+      // json = JSON.stringify(['apple', 'banana']);
+      // console.log(json);
+
+      console.log(JSON.stringify(rabbit));
     }
 
-    function func2(message) {
+    function func2() {
+      console.clear();
 
+      json = JSON.stringify(rabbit, ["name"]);
+      console.log(json);
     }
 
-    function func3(message) {
+    function func3() {
+      console.clear();
 
+      // json = JSON.stringify(rabbit, (key, value) => {
+      //   // console.log(key, value);
+      //   return key === "name" ? "ellie" : value;
+      // })
+
+      json = JSON.stringify(rabbit, ["name", "color"], (key, value) => {
+        // console.log(key, value);
+        return key === "name" ? "ellie" : value;
+      });
+
+      console.log(json);
     }
 
-    function func4(message = 'Default Parameter 😂') {
+    function func4() {
+      console.clear();
+      let json = JSON.stringify(rabbit);
 
+      console.log(json);
+
+      const obj = JSON.parse(json);
+
+      console.log(obj);
+
+      console.log(rabbit.birthDate, typeof rabbit.birthDate); // Date Object
+
+      console.log(obj.birthDate, typeof obj.birthDate); // String
+      // obj.jump()
     }
 
     function func5() {
+      console.clear();
+      let json = JSON.stringify(rabbit);
 
+      const obj = JSON.parse(json, (key, value) => {
+        // console.log(key, value);
+        return key === "birthDate" ? new Date(value) : value;
+      });
+
+      console.log(obj.birthDate, typeof obj.birthDate); // Date Object
+
+      console.log(obj);
     }
 
-    function func6() {
-
-    }
-
-    function func7() {
-
-    }
-
-    function func8() {
-
-    }
-
-    function func9() {
-
-    }
-
-    function func10() {
-
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
     });
 
-    window.addEventListener("load", function (event) {
-    });
+    window.addEventListener("load", function (event) {});
   </script>
 </head>
 
@@ -118,16 +164,32 @@
   </div>
   <hr />
   <div class="container">
-    <button class="btn button-1" role="button" onclick="func1(1)">Ternary Operator</button>
-    <button class="btn button-1" role="button" onclick="func2()">Nullish Coalescing Operator (Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func3(``)">Logical OR operator(false, Null, undefined)</button>
-    <button class="btn button-1" role="button" onclick="func4(undefined)">Default Parameter (undefined)</button>
-    <button class="btn button-1" role="button" onclick="func5()">Object Destructuring (객체 재구조화)</button>
-    <button class="btn button-1" role="button" onclick="func6()">Object.assign()</button>
-    <button class="btn button-1" role="button" onclick="func7()">Spread Syntax (Object)</button>
-    <button class="btn button-1" role="button" onclick="func8()">concat() (Array)</button>
-    <button class="btn button-1" role="button" onclick="func9()">Spread Syntax (Array)</button>
-    <button class="btn button-1" role="button" onclick="func10()">Optional Chaining</button>
+    <button class="btn button-1" role="button" onclick="func1()">JSON.stringify</button>
+    <button class="btn button-1" role="button" onclick="func2()">JSON.stringify replacer array</button>
+    <button class="btn button-1" role="button" onclick="func3()">JSON.stringify replacer callback</button>
+    <button class="btn button-1" role="button" onclick="func4()">JSON.parse</button>
+    <button class="btn button-1" role="button" onclick="func5()">JSON.parse reviver</button>
+  </div>
+  <hr />
+  <div>
+    <ul>
+      <li>HTTP : Hypertext Transfer Protocol</li>
+      <li>AJAX : Asynchronous JavasScript XML</li>
+      <li>XHR : XMLHttpRequest</li>
+      <li>XML : eXtensible Markup Language</li>
+      <li>fetch() API</li>
+      <li>Cross Browsing problem</li>
+      <li>JSON (Javascript Object Notation) : ES3 (1999)</li>
+      <li>Object {'key': 'value'}</li>
+      <li>simplest data interchange format</li>
+      <li>lightweight text-based structure</li>
+      <li>easy to read</li>
+      <li>key-value pair</li>
+      <li>used for serialization and transmission of data between the network the network connection</li>
+      <li>independent programming language and platform</li>
+      <li>Client -> serialize -> deserialize -> Server</li>
+      <li>JSON Tools : Diff / Beautify / Minify / Parser / Validator</li>
+    </ul>
   </div>
 </body>
 

@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>demo_6</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
   <style>
     .container {
       display: flex;
@@ -22,7 +22,7 @@
       border-radius: 8px;
       border-style: none;
       box-sizing: border-box;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
 
     .button-1:hover,
     .button-1:focus {
-      background-color: #F082AC;
+      background-color: #f082ac;
     }
 
     .btn {
@@ -61,7 +61,7 @@
     }
   </style>
   <script>
-    'use strict'
+    "use strict";
 
     // Object
     // one of the Javascript's data types.
@@ -75,8 +75,12 @@
         console.log(`${item} = ${person[item]}`);
       }
     }
+
     function func1() {
-      const person = { name: "jsh", age: 40 };
+      const person = {
+        name: "jsh",
+        age: 40
+      };
 
       delete person.name;
 
@@ -97,7 +101,10 @@
     }
 
     function func3() {
-      const person = { name: "jsh", age: 40 };
+      const person = {
+        name: "jsh",
+        age: 40
+      };
 
       // computed properties : runtime
       // key should be always string
@@ -144,9 +151,9 @@
       const person = new Person("p1", 1);
 
       console.clear();
-      console.log('name' in person);
-      console.log('age' in person);
-      console.log('random' in person);
+      console.log("name" in person);
+      console.log("age" in person);
+      console.log("random" in person);
     }
 
     function func6() {
@@ -166,7 +173,10 @@
     }
 
     function func7() {
-      const user1 = { name: "jsh", age: 40 };
+      const user1 = {
+        name: "jsh",
+        age: 40
+      };
       const user2 = user1;
 
       // const user3 = {};
@@ -180,19 +190,23 @@
     }
 
     function func8() {
-      const fruit1 = { color: 'red' };
-      const fruit2 = { color: 'blue', size: 'big' };
+      const fruit1 = {
+        color: "red"
+      };
+      const fruit2 = {
+        color: "blue",
+        size: "big"
+      };
       const mixed = Object.assign({}, fruit1, fruit2);
       console.log(mixed.color);
       console.log(mixed.size);
     }
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
     });
 
-    window.addEventListener("load", function (event) {
-    });
+    window.addEventListener("load", function (event) {});
   </script>
 </head>
 

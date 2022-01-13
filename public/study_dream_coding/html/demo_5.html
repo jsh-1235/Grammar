@@ -1,258 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo_5</title>
+    <link rel="stylesheet" text="text/css" href="../css/style.css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+        justify-content: space-between;
+        /* height: 50vh; */
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>demo_5</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: none;
-      justify-content: space-between;
-      /* height: 50vh; */
-    }
+      /* CSS */
+      .button-1 {
+        background-color: yellowgreen;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        /* height: 40px; */
+        /* line-height: 20px; */
+        list-style: none;
+        margin: 5px;
+        outline: none;
+        padding: 10px 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        vertical-align: baseline;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
 
-    /* CSS */
-    .button-1 {
-      background-color: yellowgreen;
-      border-radius: 8px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 2rem;
-      font-weight: 500;
-      /* height: 40px; */
-      /* line-height: 20px; */
-      list-style: none;
-      margin: 5px;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
+      .button-1:hover,
+      .button-1:focus {
+        background-color: #f082ac;
+      }
 
-    .button-1:hover,
-    .button-1:focus {
-      background-color: #F082AC;
-    }
+      .btn {
+        /* box-sizing: border-box; */
+        /* box-sizing: content-box; */
+        /* width: 100%; */
+        /* height: 100%; */
+        /* flex-grow: 1; */
+        /* margin: 5px; */
+        /* padding: 10px; */
+        /* font-size: 2rem; */
+      }
+    </style>
+    <script>
+      "use strict";
+      // Function
+      // fundamental building block in the program
+      // subprogram can be used multiple times
+      // performs a task or calculates a value
+      // function is object : First Class Function
 
-    .btn {
-      /* box-sizing: border-box; */
-      /* box-sizing: content-box; */
-      /* width: 100%; */
-      /* height: 100%; */
-      /* flex-grow: 1; */
-      /* margin: 5px; */
-      /* padding: 10px; */
-      /* font-size: 2rem; */
-    }
-  </style>
-  <script>
-    'use strict'
-    // Function
-    // fundamental building block in the program
-    // subprogram can be used multiple times
-    // performs a task or calculates a value
-    // function is object : First Class Function
+      function printAll(...args) {
+        // for (let i = 0; i < args.length; i++) {
+        //   console.log(args[i]);
+        // }
 
-    function printAll(...args) {
-      // for (let i = 0; i < args.length; i++) {
-      //   console.log(args[i]);
-      // }
+        // for (const arg of args) {
+        //   console.log(arg);
+        // }
 
-      // for (const arg of args) {
-      //   console.log(arg);
-      // }
+        args.forEach((arg, index, arr) => {
+          console.log(arg, index, arr);
+          document.writeln(`<p>${arg}, ${index}, [${arr}]</p>`);
+        });
+      }
 
-      args.forEach((arg, index, arr) => {
-        console.log(arg, index, arr);
-        document.writeln(`<p>${arg}, ${index}, [${arr}]</p>`);
-      });
-    }
+      function func1() {
+        // Rest parameter
+        printAll(1, 2, 3, 4, 5);
+      }
 
-    function func1() {
-      // Rest parameter
-      printAll(1, 2, 3, 4, 5);
-    }
+      function showMessage(message, from = "unknown") {
+        console.log(`${message} by ${from}`);
+      }
+      function func2() {
+        showMessage("hi", "jsh");
+        showMessage("hello");
+      }
 
-    function showMessage(message, from = "unknown") {
-      console.log(`${message} by ${from}`);
-    }
-    function func2() {
-      showMessage("hi", "jsh");
-      showMessage("hello");
-    }
+      let globalMessage = "global";
 
-    let globalMessage = "global";
+      function func3() {
+        // 밖에서는 안이 보이지 않지만, 안에서는 밖을 볼 수 있다.
+        function printMessage() {
+          let message = "hello";
+          console.log(message, globalMessage, childMessage);
 
-    function func3() {
-      // 밖에서는 안이 보이지 않지만, 안에서는 밖을 볼 수 있다.
-      function printMessage() {
-        let message = "hello";
-        console.log(message, globalMessage, childMessage);
+          function printAnother() {
+            console.log(message, globalMessage);
+            let childMessage = "hi";
+          }
+        }
 
-        function printAnother() {
-          console.log(message, globalMessage);
-          let childMessage = "hi";
+        printMessage();
+
+        // console.log(message, globalMessage);
+      }
+
+      function func4(user) {
+        if (user.point <= 10) {
+          console.log("Early return, early exit");
+          return;
+        }
+
+        console.log("long upgrade logic...");
+      }
+
+      // Function expression
+      // a function declaration can be called earlier than it is defined. (hoisted)
+      // a function expression is created when the execution reaches it.
+      function func5() {
+        // function declaration
+        // anonymous function
+        const print1 = function () {
+          console.log("anonymous function");
+        };
+
+        // named function
+        const print2 = function namedFunction() {
+          console.log("named function");
+        };
+
+        const print3 = print1;
+
+        print3();
+
+        print2();
+      }
+
+      function randomQuiz(answer, printYes, printNo) {
+        if (answer === "love you") {
+          printYes();
+        } else {
+          printNo();
         }
       }
 
-      printMessage();
-
-      // console.log(message, globalMessage);
-    }
-
-    function func4(user) {
-      if (user.point <= 10) {
-        console.log("Early return, early exit");
-        return;
-      }
-
-      console.log("long upgrade logic...");
-    }
-
-    // Function expression
-    // a function declaration can be called earlier than it is defined. (hoisted)
-    // a function expression is created when the execution reaches it.
-    function func5() {
-      // function declaration
       // anonymous function
-      const print1 = function () {
-        console.log("anonymous function");
-      }
+      const printYes = function () {
+        console.log("yes");
+      };
 
       // named function
-      const print2 = function namedFunction() {
-        console.log("named function");
+      // better debugging in debugger's stack traces
+      // recursions
+      function printNo() {
+        console.log("no");
       }
 
-      const print3 = print1;
-
-      print3();
-
-      print2();
-    }
-
-    function randomQuiz(answer, printYes, printNo) {
-      if (answer === "love you") {
-        printYes();
-      } else {
-        printNo();
+      function func6() {
+        randomQuiz("love you", printYes, printNo);
       }
-    }
 
-    // anonymous function
-    const printYes = function () {
-      console.log("yes");
-    }
-
-    // named function
-    // better debugging in debugger's stack traces
-    // recursions
-    function printNo() {
-      console.log("no");
-    }
-
-    function func6() {
-      randomQuiz("love you", printYes, printNo);
-    }
-
-    function sum(n) {
-      if (n === 1) {
-        console.log(1, 1);
-        return 1;
+      function sum(n) {
+        if (n === 1) {
+          console.log(1, 1);
+          return 1;
+        } else {
+          const result = sum(n - 1) + n;
+          console.log(n, result);
+          return result;
+        }
       }
-      else {
-        const result = sum(n - 1) + n
-        console.log(n, result);
-        return result;
+
+      function func7() {
+        console.log(sum(10));
       }
-    }
 
-    function func7() {
-      console.log(sum(10));
-    }
+      const add = (a, b) => a + b;
+      const subtract = (a, b) => {
+        return (a = b);
+      };
 
-    const add = (a, b) => a + b;
-    const subtract = (a, b) => {
-      return a = b;
-    }
+      function func8() {
+        console.log(add(1, 2), subtract(1, 2));
+      }
 
-    function func8() {
-      console.log(add(1, 2), subtract(1, 2));
-    }
+      function func9() {
+        (function hello() {
+          console.log("hello");
+        })();
+      }
 
-    function func9() {
-      (function hello() {
-        console.log("hello");
-      })();
-    }
+      function func10() {
+        // windows.print();
 
-    function func10() {
-      // windows.print();
+        document.body.innerHTML = printArea.innerHTML;
 
-      document.body.innerHTML = printArea.innerHTML;
+        // console.log(printArea);
 
-      // console.log(printArea);
+        window.print();
+      }
 
-      window.print();
-    }
+      window.addEventListener("DOMContentLoaded", (event) => {
+        console.log("DOM fully loaded and parsed");
+      });
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
-    });
+      window.addEventListener("load", function (event) {});
+    </script>
+  </head>
 
-    window.addEventListener("load", function (event) {
-    });
-  </script>
-</head>
-
-<body>
-  <h1 class="title">Function</h1>
-  <div>
-    <a class="menu" href="/study_dream_coding">Back</a>
-    <a class="menu" href="/">Home</a>
-  </div>
-  <hr />
-  <div class="container">
-    <button class="btn button-1" role="button" onclick="func1()">Rest parameters (add in ES6)</button>
-    <button class="btn button-1" role="button" onclick="func2()">Default parameters (add in ES6)</button>
-    <button class="btn button-1" role="button" onclick="func3()">Local scope</button>
-    <button class="btn button-1" role="button" onclick="func4({point: 5})">Early return, early exit</button>
-    <button class="btn button-1" role="button" onclick="func5()">anonymous function</button>
-    <button class="btn button-1" role="button" onclick="func6()">callback</button>
-    <button class="btn button-1" role="button" onclick="func7()">recursions</button>
-    <button class="btn button-1" role="button" onclick="func8()">Arrow function</button>
-    <button class="btn button-1" role="button" onclick="func9()">IIFE (Immediately Invoked Function Expression)</button>
-    <button class="btn button-1" role="button" onclick="func10()">print()</button>
-  </div>
-  <div id="printArea">
-    <ul>
-      <li>Test1</li>
-      <li>Test2</li>
-      <li>Test3</li>
-      <li>Test4</li>
-      <li>Test5</li>
-      <li>Test6</li>
-      <li>Test7</li>
-      <li>Test8</li>
-      <li>Test9</li>
-      <li>Test10</li>
-    </ul>
-  </div>
-</body>
-
+  <body>
+    <h1 class="title">Function</h1>
+    <div>
+      <a class="menu" href="/study_dream_coding">Back</a>
+      <a class="menu" href="/">Home</a>
+    </div>
+    <hr />
+    <div class="container">
+      <button class="btn button-1" role="button" onclick="func1()">Rest parameters (add in ES6)</button>
+      <button class="btn button-1" role="button" onclick="func2()">Default parameters (add in ES6)</button>
+      <button class="btn button-1" role="button" onclick="func3()">Local scope</button>
+      <button class="btn button-1" role="button" onclick="func4({point: 5})">Early return, early exit</button>
+      <button class="btn button-1" role="button" onclick="func5()">anonymous function</button>
+      <button class="btn button-1" role="button" onclick="func6()">callback</button>
+      <button class="btn button-1" role="button" onclick="func7()">recursions</button>
+      <button class="btn button-1" role="button" onclick="func8()">Arrow function</button>
+      <button class="btn button-1" role="button" onclick="func9()">IIFE (Immediately Invoked Function Expression)</button>
+      <button class="btn button-1" role="button" onclick="func10()">print()</button>
+    </div>
+    <div id="printArea">
+      <ul>
+        <li>Test1</li>
+        <li>Test2</li>
+        <li>Test3</li>
+        <li>Test4</li>
+        <li>Test5</li>
+        <li>Test6</li>
+        <li>Test7</li>
+        <li>Test8</li>
+        <li>Test9</li>
+        <li>Test10</li>
+      </ul>
+    </div>
+  </body>
 </html>

@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>demo_8</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
+  <link rel="stylesheet" text="text/css" href="../css/style.css" />
   <style>
     .container {
       display: flex;
@@ -22,7 +22,7 @@
       border-radius: 8px;
       border-style: none;
       box-sizing: border-box;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
       display: inline-block;
       font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -46,7 +46,7 @@
 
     .button-1:hover,
     .button-1:focus {
-      background-color: #F082AC;
+      background-color: #f082ac;
     }
 
     .btn {
@@ -61,7 +61,7 @@
     }
   </style>
   <script>
-    'use strict'
+    "use strict";
 
     function func1() {
       const arr1 = new Array();
@@ -81,7 +81,7 @@
     }
 
     function func2() {
-      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+      const fruits = ["🍎", "🥝", "🍓", "🍑", "🍈"];
 
       console.clear();
 
@@ -91,7 +91,7 @@
     }
 
     function func3() {
-      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+      const fruits = ["🍎", "🥝", "🍓", "🍑", "🍈"];
 
       console.clear();
 
@@ -101,7 +101,7 @@
     }
 
     function func4() {
-      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+      const fruits = ["🍎", "🥝", "🍓", "🍑", "🍈"];
 
       console.clear();
 
@@ -113,12 +113,12 @@
     function func5() {
       console.clear();
 
-      const fruits = ['🍎', '🥝'];
+      const fruits = ["🍎", "🥝"];
 
       console.log(fruits);
 
-      fruits.push('🍓');
-      fruits.push('🍑');
+      fruits.push("🍓");
+      fruits.push("🍑");
 
       console.log(fruits);
 
@@ -132,12 +132,12 @@
     function func6() {
       console.clear();
 
-      const fruits = ['🍎', '🥝'];
+      const fruits = ["🍎", "🥝"];
 
       console.log(fruits);
 
-      fruits.unshift('🍓');
-      fruits.unshift('🍑');
+      fruits.unshift("🍓");
+      fruits.unshift("🍑");
 
       console.log(fruits);
 
@@ -149,7 +149,7 @@
     }
 
     function func7() {
-      const fruits = ['🍎', '🥝', '🍓', '🍑', '🍈'];
+      const fruits = ["🍎", "🥝", "🍓", "🍑", "🍈"];
 
       console.clear();
 
@@ -158,34 +158,34 @@
       // fruits.splice(0);
       // fruits.splice(2);
       // fruits.splice(0, 2);
-      fruits.splice(0, 2, '🍉', '🍋');
+      fruits.splice(0, 2, "🍉", "🍋");
 
       console.log(fruits);
     }
 
     function func8() {
-      const fruits1 = ['🍎', '🥝', '🍓', '🍑', '🍈'];
-      const fruits2 = ['🍉', '🍋'];
+      const fruits1 = ["🍎", "🥝", "🍓", "🍑", "🍈"];
+      const fruits2 = ["🍉", "🍋"];
 
       console.clear();
 
       console.log(fruits1);
       console.log(fruits2);
 
-      const newFruits = fruits1.concat(fruits2, '😀');
+      const newFruits = fruits1.concat(fruits2, "😀");
       console.log(newFruits);
     }
 
     function func9() {
-      const fruits = ['🍎', '🥝', '🍓', '🍑', '🥝', '🍈'];
+      const fruits = ["🍎", "🥝", "🍓", "🍑", "🥝", "🍈"];
 
       console.clear();
 
       console.log(fruits);
 
-      console.log(fruits.indexOf('🥝'), fruits.indexOf('😀'));
-      console.log(fruits.lastIndexOf('🥝'), fruits.indexOf('😀'));
-      console.log(fruits.includes('🥝'), fruits.includes('😀'));
+      console.log(fruits.indexOf("🥝"), fruits.indexOf("😀"));
+      console.log(fruits.lastIndexOf("🥝"), fruits.indexOf("😀"));
+      console.log(fruits.includes("🥝"), fruits.includes("😀"));
     }
 
     function func10() {
@@ -203,7 +203,7 @@
 
       const fruits = "🍎,🥝,🍓,🍑,🥝,🍈";
 
-      console.log(fruits)
+      console.log(fruits);
 
       const result = fruits.split(",");
 
@@ -215,12 +215,12 @@
 
       const array = [1, 2, 3, 4, 5];
 
-      console.log(array)
+      console.log(array);
 
       const result = array.reverse();
 
       console.log(result);
-      console.log(array)
+      console.log(array);
     }
 
     function func13() {
@@ -233,7 +233,7 @@
       const result = array.slice(2, 4);
 
       console.log(result);
-      console.log(array)
+      console.log(array);
     }
 
     class Student {
@@ -245,12 +245,9 @@
       }
     }
 
-    const students = [
-      new Student('A', 29, true, 45),
-      new Student('B', 28, false, 80),
-      new Student('C', 30, true, 90),
-      new Student('D', 40, false, 66),
-      new Student('E', 18, true, 88)];
+    const students = [new Student("A", 29, true, 45), new Student("B", 28, false, 80), new Student("C", 30, true, 90),
+      new Student("D", 40, false, 66), new Student("E", 18, true, 88)
+    ];
 
     function func14() {
       const result = students.find((student, index) => {
@@ -268,12 +265,74 @@
       console.log(result);
     }
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
+    function func16() {
+      // const result = students.map((student) => {
+      //   console.log(student);
+      //   return student.score;
+      // });
+
+      const result = students.map((student) => student.score);
+
+      console.log(result);
+    }
+
+    function func17() {
+      // const result = students.filter((student, index) => {
+      //   console.log(student, index);
+      //   return student.score < 50;
+      // });
+
+      // const result = students.some((student, index, arr) => console.log(student, index, arr));
+
+      // const result = students.some((student, index, arr) => student.score < 50);
+
+      const result = !students.every((student) => student.score >= 50);
+
+      console.log(result);
+    }
+
+    function func18() {
+      // const result = students.map((student) => student.score).reduce((previousValue, currentValue) => previousValue + currentValue);
+
+      // console.log(result, result / students.length);
+
+      const result = students.reduce((previousValue, currentValue) => {
+        console.log(previousValue, currentValue);
+        return previousValue + currentValue.score;
+      }, 0);
+
+      console.log(result, result / students.length);
+    }
+
+    function func19() {
+      const result = students
+        .map((student) => student.score)
+        .filter((score) => score > 50)
+        .join(",");
+      console.log(result);
+    }
+
+    function func20() {
+      // const result = students.sort((a, b) => {
+      //   console.log(a.score, b.score);
+
+      //   return a.score - b.score;
+      //   // return b.score - a.score;
+      // });
+
+      const result = students
+        .map((student) => student.score)
+        .sort((a, b) => a - b)
+        .join("-");
+
+      console.log(result);
+    }
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+      console.log("DOM fully loaded and parsed");
     });
 
-    window.addEventListener("load", function (event) {
-    });
+    window.addEventListener("load", function (event) {});
   </script>
 </head>
 
@@ -300,6 +359,13 @@
     <button class="btn button-1" role="button" onclick="func13()">make new array without the first two elements</button>
     <button class="btn button-1" role="button" onclick="func14()">find a student with the score 90</button>
     <button class="btn button-1" role="button" onclick="func15()">make an array of enrolled students</button>
+    <button class="btn button-1" role="button" onclick="func16()">make an array containing only</button>
+    <button class="btn button-1" role="button" onclick="func17()">check if there is a student with the score lower than
+      50</button>
+    <button class="btn button-1" role="button" onclick="func18()">compute student's average score</button>
+    <button class="btn button-1" role="button" onclick="func19()">make a string containing all the scores result should
+      be '45, 80, 90, 66, 99'</button>
+    <button class="btn button-1" role="button" onclick="func20()">sorted in ascending order</button>
   </div>
 </body>
 

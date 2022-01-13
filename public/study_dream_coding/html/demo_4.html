@@ -1,277 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo_4</title>
+    <link rel="stylesheet" text="text/css" href="../css/style.css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+        justify-content: space-between;
+        /* height: 50vh; */
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>demo_4</title>
-  <link rel="stylesheet" text="text/css" href="../css/style.css">
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: none;
-      justify-content: space-between;
-      /* height: 50vh; */
-    }
+      /* CSS */
+      .button-1 {
+        background-color: black;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        /* height: 40px; */
+        /* line-height: 20px; */
+        list-style: none;
+        margin: 5px;
+        outline: none;
+        padding: 10px 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        vertical-align: baseline;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
 
-    /* CSS */
-    .button-1 {
-      background-color: black;
-      border-radius: 8px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      /* height: 40px; */
-      /* line-height: 20px; */
-      list-style: none;
-      margin: 5px;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
+      .button-1:hover,
+      .button-1:focus {
+        background-color: #f082ac;
+      }
 
-    .button-1:hover,
-    .button-1:focus {
-      background-color: #F082AC;
-    }
+      .btn {
+        /* box-sizing: border-box; */
+        /* box-sizing: content-box; */
+        /* width: 100%; */
+        /* height: 100%; */
+        /* flex-grow: 1; */
+        /* margin: 5px; */
+        /* padding: 10px; */
+        /* font-size: 2rem; */
+      }
+    </style>
+    <script>
+      function func1() {
+        let html = "<div>";
 
-    .btn {
-      /* box-sizing: border-box; */
-      /* box-sizing: content-box; */
-      /* width: 100%; */
-      /* height: 100%; */
-      /* flex-grow: 1; */
-      /* margin: 5px; */
-      /* padding: 10px; */
-      /* font-size: 2rem; */
-    }
-  </style>
-  <script>
-    function func1() {
-      let html = "<div>";
+        html += "<h2>Immutable data types: primitive types, frozen Objects(i.e. Object.freeze());</h2>";
+        html += "<h2>Mutable data types: all object by default are mutable in JS</h2>";
+        html += "<h3>favor immutable data type always for a few reasons:</h3>";
+        html += "<ol>";
+        html += "<li>security</li>";
+        html += "<li>thread safety</li>";
+        html += "<li>reduce human mistake</li>";
+        html += "</ol>";
+        html += "</div>";
 
-      html += "<h2>Immutable data types: primitive types, frozen Objects(i.e. Object.freeze());</h2>";
-      html += "<h2>Mutable data types: all object by default are mutable in JS</h2>";
-      html += "<h3>favor immutable data type always for a few reasons:</h3>";
-      html += "<ol>";
-      html += "<li>security</li>"
-      html += "<li>thread safety</li>"
-      html += "<li>reduce human mistake</li>"
-      html += "</ol>";
-      html += "</div>";
+        console.log(window.document.getElementById("result"));
 
-      console.log(window.document.getElementById("result"));
+        window.document.getElementById("result").innerHTML = html;
+      }
 
-      window.document.getElementById("result").innerHTML = html;
-    }
+      function func2() {
+        console.log("my " + "cat");
+        console.log("1" + 2);
+        console.log(`string literals: 1 + 2 = ${1 + 2}`);
+      }
 
-    function func2() {
-      console.log("my " + "cat");
-      console.log("1" + 2);
-      console.log(`string literals: 1 + 2 = ${1 + 2}`);
-    }
+      function func3() {
+        let num1 = 5;
+        let num2 = 2;
 
-    function func3() {
-      let num1 = 5;
-      let num2 = 2;
+        console.log(num1 + num2); // add
+        console.log(num1 - num2); // subtract
+        console.log(num1 * num2); // divide
+        console.log(num1 / num2); // multiply
+        console.log(num1 % num2); // remainder
+        console.log(num1 ** num2); // exponentiation
+      }
 
-      console.log(num1 + num2);   // add
-      console.log(num1 - num2);   // subtract
-      console.log(num1 * num2);   // divide
-      console.log(num1 / num2);   // multiply
-      console.log(num1 % num2);   // remainder
-      console.log(num1 ** num2);  // exponentiation
-    }
+      function func4() {
+        let counter1 = 2;
+        let counter2 = 2;
 
-    function func4() {
-      let counter1 = 2;
-      let counter2 = 2;
+        console.log(counter1++); // postIncrement
+        console.log(++counter2); // preIncrement
+        console.log(counter1, counter2);
 
-      console.log(counter1++);    // postIncrement
-      console.log(++counter2);    // preIncrement
-      console.log(counter1, counter2);
+        counter1 = counter2 = 2;
 
-      counter1 = counter2 = 2;
+        console.log(counter1--); // postDecrement
+        console.log(--counter2); // preDecrement
+        console.log(counter1, counter2);
+      }
 
-      console.log(counter1--);    // postDecrement
-      console.log(--counter2);    // preDecrement
-      console.log(counter1, counter2);
-    }
+      function func5() {
+        let x = 3;
+        let y = 6;
 
-    function func5() {
-      let x = 3;
-      let y = 6;
+        console.log((x += y));
+        console.log((x -= y));
+        console.log((x *= y));
+        console.log((x /= y));
+      }
 
-      console.log(x += y);
-      console.log(x -= y);
-      console.log(x *= y);
-      console.log(x /= y);
-    }
+      function func6() {
+        let num1 = 5;
+        let num2 = 2;
 
-    function func6() {
-      let num1 = 5;
-      let num2 = 2;
+        console.log(num1 > num2);
+        console.log(num1 < num2);
+        console.log(num1 >= num2);
+        console.log(num1 <= num2);
+      }
 
-      console.log(num1 > num2);
-      console.log(num1 < num2);
-      console.log(num1 >= num2);
-      console.log(num1 <= num2);
-    }
+      function func7() {
+        const value1 = true;
+        const value2 = 4 < 2;
 
-    function func7() {
-      const value1 = true;
-      const value2 = 4 < 2;
+        // || (or), finds the first truthy value
+        console.log(`or: ${value1 || value2 || check()}`);
 
-      // || (or), finds the first truthy value
-      console.log(`or: ${value1 || value2 || check()}`);
+        // && (and), finds the first falsy value
+        console.log(`and: ${value1 && value2 && check()}`);
 
-      // && (and), finds the first falsy value
-      console.log(`and: ${value1 && value2 && check()}`);
+        function check() {
+          for (let i = 0; i < 10; i++) {
+            console.log("😃");
+          }
 
-      function check() {
+          return true;
+        }
+      }
+
+      function func8() {
+        const stringFive = "5";
+        const numberFive = 5;
+
+        console.log("loose equality, with type conversion", stringFive == numberFive);
+        console.log("loose equality, with type conversion", stringFive != numberFive);
+        console.log("strict equality, no type conversion", stringFive === numberFive);
+        console.log("strict equality, no type conversion", stringFive !== numberFive);
+
+        // object equality by reference
+        const ellie1 = { name: "ellie" };
+        const ellie2 = { name: "ellie" };
+        const ellie3 = ellie1;
+
+        console.log(ellie1 == ellie2);
+        console.log(ellie1 === ellie2);
+        console.log(ellie1 == ellie3);
+        console.log(ellie1 === ellie3);
+
+        console.log("-------------");
+
+        console.log(0 == false);
+        console.log(0 === false);
+        console.log("" == false);
+        console.log("" === false);
+        console.log(null == undefined);
+        console.log(null === undefined);
+      }
+
+      function func9() {
+        const name = "jsh";
+
+        if (name === "jsh") {
+          console.log("Welcome, jsh");
+        } else {
+          console.log("unknown");
+        }
+
+        console.log("Ternary operator", name === "kar" ? "😀" : "🤣");
+
+        let browser = "IE";
+
+        switch (browser) {
+          case "IE":
+            console.log("go away");
+            break;
+          case "Chrome":
+            console.log("love away");
+            break;
+          case "Firefox":
+            console.log("love away");
+            break;
+          default:
+            console.log("same all");
+            break;
+        }
+      }
+
+      function func10() {
+        let i = 0;
+
+        while (i < 10) {
+          console.log(i);
+
+          if (i % 2 == 0) {
+            break;
+          }
+
+          i++;
+        }
+
+        i = 5;
+
+        do {
+          console.log(i);
+          i++;
+          if (i == 8) {
+            break;
+          }
+        } while (i < 10);
+
+        // nested loops
         for (let i = 0; i < 10; i++) {
-          console.log("😃")
-        }
-
-        return true;
-      }
-    }
-
-    function func8() {
-      const stringFive = "5";
-      const numberFive = 5;
-
-      console.log("loose equality, with type conversion", stringFive == numberFive);
-      console.log("loose equality, with type conversion", stringFive != numberFive);
-      console.log("strict equality, no type conversion", stringFive === numberFive);
-      console.log("strict equality, no type conversion", stringFive !== numberFive);
-
-      // object equality by reference
-      const ellie1 = { name: 'ellie' };
-      const ellie2 = { name: 'ellie' };
-      const ellie3 = ellie1;
-
-      console.log(ellie1 == ellie2);
-      console.log(ellie1 === ellie2);
-      console.log(ellie1 == ellie3);
-      console.log(ellie1 === ellie3);
-
-      console.log("-------------");
-
-      console.log(0 == false);
-      console.log(0 === false);
-      console.log('' == false);
-      console.log('' === false);
-      console.log(null == undefined);
-      console.log(null === undefined);
-    }
-
-    function func9() {
-      const name = "jsh"
-
-      if (name === "jsh") {
-        console.log("Welcome, jsh");
-      } else {
-        console.log("unknown");
-      }
-
-
-      console.log("Ternary operator", name === "kar" ? "😀" : "🤣");
-
-      let browser = "IE";
-
-      switch (browser) {
-        case "IE":
-          console.log("go away");
-          break;
-        case "Chrome":
-          console.log("love away");
-          break;
-        case "Firefox":
-          console.log("love away");
-          break;
-        default:
-          console.log("same all");
-          break;
-      }
-    }
-
-    function func10() {
-      let i = 0;
-
-      while (i < 10) {
-        console.log(i);
-
-        if (i % 2 == 0) {
-          break;
-        }
-
-        i++;
-      }
-
-      i = 5;
-
-      do {
-        console.log(i);
-        i++;
-        if (i == 8) {
-          break;
-        }
-      } while (i < 10);
-
-      // nested loops
-      for (let i = 0; i < 10; i++) {
-        // inline variable declaration
-        for (let j = 0; j < 10; j++) {
-          console.log(i, j, i * j);
+          // inline variable declaration
+          for (let j = 0; j < 10; j++) {
+            console.log(i, j, i * j);
+          }
         }
       }
-    }
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
-    });
+      window.addEventListener("DOMContentLoaded", (event) => {
+        console.log("DOM fully loaded and parsed");
+      });
 
-    window.addEventListener("load", function (event) {
-    });
-  </script>
-</head>
+      window.addEventListener("load", function (event) {});
+    </script>
+  </head>
 
-<body>
-  <h1 class="title">Operator</h1>
-  <div>
-    <a class="menu" href="/study_dream_coding">Back</a>
-    <a class="menu" href="/">Home</a>
-  </div>
-  <hr />
-  <div class="container">
-    <button class="btn button-1" role="button" onclick="func1()">Immutable / Mutable data types</button>
-    <button class="btn button-1" role="button" onclick="func2()">String concatenation</button>
-    <button class="btn button-1" role="button" onclick="func3()">Numeric operator</button>
-    <button class="btn button-1" role="button" onclick="func4()">Increment and decrement operators</button>
-    <button class="btn button-1" role="button" onclick="func5()">Assignment operators</button>
-    <button class="btn button-1" role="button" onclick="func6()">Comparison operators</button>
-    <button class="btn button-1" role="button" onclick="func7()">Logical operator</button>
-    <button class="btn button-1" role="button" onclick="func8()">Equality</button>
-    <button class="btn button-1" role="button" onclick="func9()">Conditional operator</button>
-    <button class="btn button-1" role="button" onclick="func10()">Loops</button>
-  </div>
-  <hr>
-  <div id="result"></div>
-</body>
-
+  <body>
+    <h1 class="title">Operator</h1>
+    <div>
+      <a class="menu" href="/study_dream_coding">Back</a>
+      <a class="menu" href="/">Home</a>
+    </div>
+    <hr />
+    <div class="container">
+      <button class="btn button-1" role="button" onclick="func1()">Immutable / Mutable data types</button>
+      <button class="btn button-1" role="button" onclick="func2()">String concatenation</button>
+      <button class="btn button-1" role="button" onclick="func3()">Numeric operator</button>
+      <button class="btn button-1" role="button" onclick="func4()">Increment and decrement operators</button>
+      <button class="btn button-1" role="button" onclick="func5()">Assignment operators</button>
+      <button class="btn button-1" role="button" onclick="func6()">Comparison operators</button>
+      <button class="btn button-1" role="button" onclick="func7()">Logical operator</button>
+      <button class="btn button-1" role="button" onclick="func8()">Equality</button>
+      <button class="btn button-1" role="button" onclick="func9()">Conditional operator</button>
+      <button class="btn button-1" role="button" onclick="func10()">Loops</button>
+    </div>
+    <hr />
+    <div id="result"></div>
+  </body>
 </html>
